@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using FootballWebSiteApi;
 
-namespace WebApplication14
+namespace FootballWebSiteApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

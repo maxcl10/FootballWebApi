@@ -233,6 +233,7 @@
     <Content Include="Models\FootballWebSiteModel.edmx.diagram">
       <DependentUpon>FootballWebSiteModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
