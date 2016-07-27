@@ -22,7 +22,7 @@ namespace FootballWebSiteApi.Repository
 
         public IEnumerable<JTeam> Get()
         {
-            return Mapper.Map(entities.Teams);
+            return Mapper.Map(entities.Teams.OrderBy(o=>o.name));
         }
 
         public JTeam Get(string id)

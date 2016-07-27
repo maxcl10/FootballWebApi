@@ -27,12 +27,20 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Post(JGame value)
         {
-            throw new NotImplementedException();
+            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            {
+                var game = repository.Post(value);
+                return Json(game);
+            }
         }
 
         public IHttpActionResult Put(string id, JGame value)
         {
-            throw new NotImplementedException();
+            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            {
+                var game = repository.Put(id, value);
+                return Json(game);
+            }
         }
 
         public IHttpActionResult Delete(string id)
