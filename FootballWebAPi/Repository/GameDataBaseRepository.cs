@@ -62,7 +62,7 @@ namespace FootballWebSiteApi.Repository
         /// <exception cref="NotImplementedException"></exception>
         public JGame Get(string id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map(entities.Games.Single(o => o.Id.ToString() == id));
         }
 
         /// <summary>

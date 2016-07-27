@@ -20,10 +20,14 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
-        //public IHttpActionResult Get(string id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public IHttpActionResult Get(string id)
+        {
+            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            {
+                var games = repository.Get(id);
+                return Json(games);
+            }
+        }
 
         public IHttpActionResult Post(JGame value)
         {
