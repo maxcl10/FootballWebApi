@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FootballWebSiteDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="publisher" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publishedDate" Type="datetime" />
+    <Property Name="modifiedDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="HomeTeam" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AwayTeam" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MatchDate" Type="datetime" Nullable="false" />
+    <Property Name="SeasonId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Championship" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HomeTeamScore" Type="int" />
+    <Property Name="AwayTeamScore" Type="int" />
+  </EntityType>
+  <EntityType Name="LazyRanking">
+    <Key>
+      <PropertyRef Name="team" />
+    </Key>
+    <Property Name="team" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="position" Type="int" />
+    <Property Name="points" Type="int" />
+    <Property Name="matchPlayed" Type="int" />
+    <Property Name="matchWon" Type="int" />
+    <Property Name="matchDraw" Type="int" />
+    <Property Name="matchLost" Type="int" />
+    <Property Name="goalsScored" Type="int" />
+    <Property Name="goalsAgainst" Type="int" />
+    <Property Name="goalDifference" Type="int" />
+    <Property Name="withdaw" Type="int" />
+    <Property Name="penality" Type="int" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="height" Type="int" />
+    <Property Name="weight" Type="int" />
+    <Property Name="nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="position" Type="nvarchar" MaxLength="50" />
+    <Property Name="previousClubs" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Game_Team">
+    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="HomeTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Game_Team1">
+    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="AwayTeam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FootballWebSiteDbModelStoreContainer">
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LazyRanking" EntityType="Self.LazyRanking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Game_Team" Association="Self.FK_Game_Team">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Game_Team1" Association="Self.FK_Game_Team1">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

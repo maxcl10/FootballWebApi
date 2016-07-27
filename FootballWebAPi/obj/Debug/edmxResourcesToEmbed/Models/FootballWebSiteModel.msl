@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FootballWebSiteDbModelStoreContainer" CdmEntityContainer="FootballWebSiteDbEntities">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="publishedDate" ColumnName="publishedDate" />
+          <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="previousClubs" ColumnName="previousClubs" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LazyRankings">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.LazyRanking">
+        <MappingFragment StoreEntitySet="LazyRanking">
+          <ScalarProperty Name="penality" ColumnName="penality" />
+          <ScalarProperty Name="withdaw" ColumnName="withdaw" />
+          <ScalarProperty Name="goalDifference" ColumnName="goalDifference" />
+          <ScalarProperty Name="goalsAgainst" ColumnName="goalsAgainst" />
+          <ScalarProperty Name="goalsScored" ColumnName="goalsScored" />
+          <ScalarProperty Name="matchLost" ColumnName="matchLost" />
+          <ScalarProperty Name="matchDraw" ColumnName="matchDraw" />
+          <ScalarProperty Name="matchWon" ColumnName="matchWon" />
+          <ScalarProperty Name="matchPlayed" ColumnName="matchPlayed" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="team" ColumnName="team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="AwayTeamScore" ColumnName="AwayTeamScore" />
+          <ScalarProperty Name="HomeTeamScore" ColumnName="HomeTeamScore" />
+          <ScalarProperty Name="Championship" ColumnName="Championship" />
+          <ScalarProperty Name="SeasonId" ColumnName="SeasonId" />
+          <ScalarProperty Name="MatchDate" ColumnName="MatchDate" />
+          <ScalarProperty Name="AwayTeam" ColumnName="AwayTeam" />
+          <ScalarProperty Name="HomeTeam" ColumnName="HomeTeam" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="shortName" ColumnName="shortName" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
