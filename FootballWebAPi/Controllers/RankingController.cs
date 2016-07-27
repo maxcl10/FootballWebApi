@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FootballWebSiteApi.Models;
+using FootballWebSiteApi.Repository;
 using Newtonsoft.Json;
-using WebApplication14.Models;
-using WebApplication14.Repository;
 
-namespace WebApplication14.Controllers
+namespace FootballWebSiteApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
     public class RankingController : ApiController

@@ -12,22 +12,19 @@ namespace FootballWebSiteApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Team
+    public partial class Season
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Team()
+        public Season()
         {
-            this.Games = new HashSet<Game>();
-            this.Games1 = new HashSet<Game>();
+            this.Championships = new HashSet<Championship>();
         }
     
         public System.Guid id { get; set; }
-        public string name { get; set; }
-        public string shortName { get; set; }
+        public System.DateTime startDate { get; set; }
+        public System.DateTime endDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Game> Games { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Game> Games1 { get; set; }
+        public virtual ICollection<Championship> Championships { get; set; }
     }
 }

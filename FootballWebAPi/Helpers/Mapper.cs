@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
-using WebApplication14.Models;
+﻿using System.Collections.Generic;
+using FootballWebSiteApi.Models;
 
-namespace WebApplication14.Helpers
+namespace FootballWebSiteApi.Helpers
 {
     public static class Mapper
     {

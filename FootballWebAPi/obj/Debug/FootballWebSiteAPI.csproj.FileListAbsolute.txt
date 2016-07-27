@@ -107,9 +107,6 @@ D:\Git\FootballWebApi\FootballWebApi\bin\roslyn\System.Reflection.Metadata.dll
 D:\Git\FootballWebApi\FootballWebApi\bin\roslyn\vbc.exe
 D:\Git\FootballWebApi\FootballWebApi\bin\roslyn\VBCSCompiler.exe
 D:\Git\FootballWebApi\FootballWebApi\bin\roslyn\VBCSCompiler.exe.config
-D:\Git\FootballWebApi\FootballWebApi\bin\WebApplication14.dll.config
-D:\Git\FootballWebApi\FootballWebApi\bin\WebApplication14.dll
-D:\Git\FootballWebApi\FootballWebApi\bin\WebApplication14.pdb
 D:\Git\FootballWebApi\FootballWebApi\bin\EntityFramework.dll
 D:\Git\FootballWebApi\FootballWebApi\bin\EntityFramework.SqlServer.dll
 D:\Git\FootballWebApi\FootballWebApi\bin\Microsoft.AI.Agent.Intercept.dll
@@ -139,6 +136,8 @@ D:\Git\FootballWebApi\FootballWebApi\bin\Newtonsoft.Json.xml
 D:\Git\FootballWebApi\FootballWebApi\bin\System.Net.Http.Formatting.xml
 D:\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.xml
 D:\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.WebHost.xml
-D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteAPI.csprojResolveAssemblyReference.cache
-D:\Git\FootballWebApi\FootballWebApi\obj\Debug\WebApplication14.dll
-D:\Git\FootballWebApi\FootballWebApi\obj\Debug\WebApplication14.pdb
+D:\Git\FootballWebApi\FootballWebApi\bin\FootballWebSiteApi.dll.config
+D:\Git\FootballWebApi\FootballWebApi\bin\FootballWebSiteApi.dll
+D:\Git\FootballWebApi\FootballWebApi\bin\FootballWebSiteApi.pdb
+D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.dll
+D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.pdb

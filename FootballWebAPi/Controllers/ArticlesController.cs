@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using WebApplication14.Models;
-using WebApplication14.Repository;
+using FootballWebSiteApi.Models;
+using FootballWebSiteApi.Repository;
 
-namespace WebApplication14.Controllers
+namespace FootballWebSiteApi.Controllers
 {
 
 

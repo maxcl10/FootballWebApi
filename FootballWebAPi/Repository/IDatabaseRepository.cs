@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebApplication14.Models;
 
-namespace WebApplication14.Repository
+namespace FootballWebSiteApi.Repository
 {
     public interface IDatabaseRepository<T>: IDisposable
     {

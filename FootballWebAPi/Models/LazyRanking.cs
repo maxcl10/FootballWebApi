@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication14.Models
+namespace FootballWebSiteApi.Models
 {
     using System;
     using System.Collections.Generic;

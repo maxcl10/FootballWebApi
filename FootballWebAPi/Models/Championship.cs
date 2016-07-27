@@ -12,15 +12,12 @@ namespace FootballWebSiteApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Article
+    public partial class Championship
     {
-        public System.Guid id { get; set; }
-        public string title { get; set; }
-        public string body { get; set; }
-        public string publisher { get; set; }
-        public Nullable<System.DateTime> publishedDate { get; set; }
-        public Nullable<System.DateTime> modifiedDate { get; set; }
-        public Nullable<System.DateTime> deletedDate { get; set; }
-        public System.DateTime creationDate { get; set; }
+        public Nullable<System.Guid> id { get; set; }
+        public string name { get; set; }
+        public System.Guid seasonId { get; set; }
+    
+        public virtual Season Season { get; set; }
     }
 }

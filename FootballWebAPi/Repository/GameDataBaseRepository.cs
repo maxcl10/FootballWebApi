@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using WebApplication14.Helpers;
-using WebApplication14.Models;
+using FootballWebSiteApi.Helpers;
+using FootballWebSiteApi.Models;
 
-namespace WebApplication14.Repository
+namespace FootballWebSiteApi.Repository
 {
     public class GameDataBaseRepository : IDisposable, IDatabaseRepository<JGame>
     {

@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using WebApplication14.Models;
-using WebApplication14.Repository;
+using FootballWebSiteApi.Models;
+using FootballWebSiteApi.Repository;
 
-namespace WebApplication14.Controllers
+namespace FootballWebSiteApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
     public class TeamsController : ApiController, ICrudApi<JTeam>
     {
-
-
         public IHttpActionResult Get()
         {
             using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())

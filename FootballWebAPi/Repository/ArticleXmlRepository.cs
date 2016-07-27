@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Xml.Linq;
-using WebApplication14.Models;
+using FootballWebSiteApi.Models;
 
-namespace WebApplication14.Repository
+namespace FootballWebSiteApi.Repository
 {
     public class ArticleXmlRepository : IDatabaseRepository<Article>, IDisposable
     {

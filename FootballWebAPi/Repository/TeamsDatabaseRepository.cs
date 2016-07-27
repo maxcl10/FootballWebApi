@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using WebApplication14.Helpers;
-using WebApplication14.Models;
+using FootballWebSiteApi.Helpers;
+using FootballWebSiteApi.Models;
 
-namespace WebApplication14.Repository
+namespace FootballWebSiteApi.Repository
 {
     public class TeamsDatabaseRepository : IDatabaseRepository<JTeam>, IDisposable
     {

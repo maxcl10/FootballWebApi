@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApplication14</RootNamespace>
-    <AssemblyName>WebApplication14</AssemblyName>
+    <RootNamespace>FootballWebSiteApi</RootNamespace>
+    <AssemblyName>FootballWebSiteApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -161,6 +161,12 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Championship.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChampionshipTeam.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FootballWebSiteModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,7 +194,22 @@
     <Compile Include="Models\Player.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ranking.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Season.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Staff.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Team.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

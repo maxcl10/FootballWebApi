@@ -12,6 +12,14 @@
         <EntityTypeShape EntityType="FootballWebSiteDbModel.Team" Width="1.5" PointX="4.125" PointY="4.875" />
         <AssociationConnector Association="FootballWebSiteDbModel.FK_Game_Team" />
         <AssociationConnector Association="FootballWebSiteDbModel.FK_Game_Team1" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.ChampionshipTeam" Width="1.5" PointX="3.75" PointY="7.75" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.Season" Width="1.5" PointX="5.75" PointY="0.875" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.Staff" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.User" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.Championship" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="FootballWebSiteDbModel.Ranking" Width="1.5" PointX="9.75" PointY="3.75" />
+        <AssociationConnector Association="FootballWebSiteDbModel.FK_Championship_Season" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

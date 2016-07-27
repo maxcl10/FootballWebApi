@@ -18,6 +18,25 @@
           <Property Name="deletedDate" Type="datetime" />
           <Property Name="creationDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Championship">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="seasonId" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="seasonId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChampionshipTeam">
+          <Key>
+            <PropertyRef Name="championshipTeamId" />
+          </Key>
+          <Property Name="championshipTeamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="championshipId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="teamId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Game">
           <Key>
             <PropertyRef Name="Id" />
@@ -62,6 +81,66 @@
           <Property Name="position" Type="nvarchar" MaxLength="50" />
           <Property Name="previousClubs" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ranking">
+          <Key>
+            <PropertyRef Name="championshipId" />
+            <PropertyRef Name="teamId" />
+            <PropertyRef Name="position" />
+            <PropertyRef Name="points" />
+            <PropertyRef Name="matchPlayed" />
+            <PropertyRef Name="matchWon" />
+            <PropertyRef Name="matchDraw" />
+            <PropertyRef Name="matchLost" />
+            <PropertyRef Name="goalsScored" />
+            <PropertyRef Name="goalsAgainst" />
+            <PropertyRef Name="goalDifference" />
+            <PropertyRef Name="withdraw" />
+            <PropertyRef Name="penality" />
+          </Key>
+          <Property Name="championshipId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="teamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="position" Type="int" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="matchPlayed" Type="int" Nullable="false" />
+          <Property Name="matchWon" Type="int" Nullable="false" />
+          <Property Name="matchDraw" Type="int" Nullable="false" />
+          <Property Name="matchLost" Type="int" Nullable="false" />
+          <Property Name="goalsScored" Type="int" Nullable="false" />
+          <Property Name="goalsAgainst" Type="int" Nullable="false" />
+          <Property Name="goalDifference" Type="int" Nullable="false" />
+          <Property Name="withdraw" Type="int" Nullable="false" />
+          <Property Name="penality" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="endDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="position" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Team">
           <Key>
             <PropertyRef Name="id" />
@@ -70,6 +149,27 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="alias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emailAddress" Type="nchar" MaxLength="70" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Championship_Season">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Championship" Type="Self.Championship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Championship">
+              <PropertyRef Name="seasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Game_Team">
           <End Role="Team" Type="Self.Team" Multiplicity="1" />
           <End Role="Game" Type="Self.Game" Multiplicity="*" />
@@ -96,10 +196,43 @@
         </Association>
         <EntityContainer Name="FootballWebSiteDbModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChampionshipTeam" EntityType="Self.ChampionshipTeam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LazyRanking" EntityType="Self.LazyRanking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Championship" EntityType="Self.Championship" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Championship].[id] AS [id], 
+    [Championship].[name] AS [name], 
+    [Championship].[seasonId] AS [seasonId]
+    FROM [dbo].[Championship] AS [Championship]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ranking" EntityType="Self.Ranking" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ranking].[championshipId] AS [championshipId], 
+    [Ranking].[teamId] AS [teamId], 
+    [Ranking].[position] AS [position], 
+    [Ranking].[points] AS [points], 
+    [Ranking].[matchPlayed] AS [matchPlayed], 
+    [Ranking].[matchWon] AS [matchWon], 
+    [Ranking].[matchDraw] AS [matchDraw], 
+    [Ranking].[matchLost] AS [matchLost], 
+    [Ranking].[goalsScored] AS [goalsScored], 
+    [Ranking].[goalsAgainst] AS [goalsAgainst], 
+    [Ranking].[goalDifference] AS [goalDifference], 
+    [Ranking].[withdraw] AS [withdraw], 
+    [Ranking].[penality] AS [penality]
+    FROM [dbo].[Ranking] AS [Ranking]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Championship_Season" Association="Self.FK_Championship_Season">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Championship" EntitySet="Championship" />
+          </AssociationSet>
           <AssociationSet Name="FK_Game_Team" Association="Self.FK_Game_Team">
             <End Role="Team" EntitySet="Team" />
             <End Role="Game" EntitySet="Game" />
@@ -139,6 +272,17 @@
           <AssociationSet Name="FK_Game_Team1" Association="FootballWebSiteDbModel.FK_Game_Team1">
             <End Role="Team" EntitySet="Teams" />
             <End Role="Game" EntitySet="Games" />
+          </AssociationSet>
+          <EntitySet Name="ChampionshipTeams" EntityType="FootballWebSiteDbModel.ChampionshipTeam" />
+          <EntitySet Name="Seasons" EntityType="FootballWebSiteDbModel.Season" />
+          <EntitySet Name="Staffs" EntityType="FootballWebSiteDbModel.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="FootballWebSiteDbModel.sysdiagram" />
+          <EntitySet Name="Users" EntityType="FootballWebSiteDbModel.User" />
+          <EntitySet Name="Championships" EntityType="FootballWebSiteDbModel.Championship" />
+          <EntitySet Name="Rankings" EntityType="FootballWebSiteDbModel.Ranking" />
+          <AssociationSet Name="FK_Championship_Season" Association="FootballWebSiteDbModel.FK_Championship_Season">
+            <End Role="Season" EntitySet="Seasons" />
+            <End Role="Championship" EntitySet="Championships" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Player">
@@ -221,6 +365,104 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ChampionshipTeam">
+          <Key>
+            <PropertyRef Name="championshipTeamId" />
+          </Key>
+          <Property Name="championshipTeamId" Type="Guid" Nullable="false" />
+          <Property Name="championshipId" Type="Guid" Nullable="false" />
+          <Property Name="teamId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Championships" Relationship="FootballWebSiteDbModel.FK_Championship_Season" FromRole="Season" ToRole="Championship" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="alias" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emailAddress" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Championship">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="seasonId" />
+          </Key>
+          <Property Name="id" Type="Guid" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seasonId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Season" Relationship="FootballWebSiteDbModel.FK_Championship_Season" FromRole="Championship" ToRole="Season" />
+        </EntityType>
+        <EntityType Name="Ranking">
+          <Key>
+            <PropertyRef Name="championshipId" />
+            <PropertyRef Name="teamId" />
+            <PropertyRef Name="position" />
+            <PropertyRef Name="points" />
+            <PropertyRef Name="matchPlayed" />
+            <PropertyRef Name="matchWon" />
+            <PropertyRef Name="matchDraw" />
+            <PropertyRef Name="matchLost" />
+            <PropertyRef Name="goalsScored" />
+            <PropertyRef Name="goalsAgainst" />
+            <PropertyRef Name="goalDifference" />
+            <PropertyRef Name="withdraw" />
+            <PropertyRef Name="penality" />
+          </Key>
+          <Property Name="championshipId" Type="Guid" Nullable="false" />
+          <Property Name="teamId" Type="Guid" Nullable="false" />
+          <Property Name="position" Type="Int32" Nullable="false" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="matchPlayed" Type="Int32" Nullable="false" />
+          <Property Name="matchWon" Type="Int32" Nullable="false" />
+          <Property Name="matchDraw" Type="Int32" Nullable="false" />
+          <Property Name="matchLost" Type="Int32" Nullable="false" />
+          <Property Name="goalsScored" Type="Int32" Nullable="false" />
+          <Property Name="goalsAgainst" Type="Int32" Nullable="false" />
+          <Property Name="goalDifference" Type="Int32" Nullable="false" />
+          <Property Name="withdraw" Type="Int32" Nullable="false" />
+          <Property Name="penality" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Championship_Season">
+          <End Type="FootballWebSiteDbModel.Season" Role="Season" Multiplicity="1" />
+          <End Type="FootballWebSiteDbModel.Championship" Role="Championship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Championship">
+              <PropertyRef Name="seasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -294,6 +536,84 @@
                 <ScalarProperty Name="shortName" ColumnName="shortName" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChampionshipTeams">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.ChampionshipTeam">
+              <MappingFragment StoreEntitySet="ChampionshipTeam">
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="championshipId" ColumnName="championshipId" />
+                <ScalarProperty Name="championshipTeamId" ColumnName="championshipTeamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seasons">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.Season">
+              <MappingFragment StoreEntitySet="Season">
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Championships">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.Championship">
+              <MappingFragment StoreEntitySet="Championship">
+                <ScalarProperty Name="seasonId" ColumnName="seasonId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rankings">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.Ranking">
+              <MappingFragment StoreEntitySet="Ranking">
+                <ScalarProperty Name="penality" ColumnName="penality" />
+                <ScalarProperty Name="withdraw" ColumnName="withdraw" />
+                <ScalarProperty Name="goalDifference" ColumnName="goalDifference" />
+                <ScalarProperty Name="goalsAgainst" ColumnName="goalsAgainst" />
+                <ScalarProperty Name="goalsScored" ColumnName="goalsScored" />
+                <ScalarProperty Name="matchLost" ColumnName="matchLost" />
+                <ScalarProperty Name="matchDraw" ColumnName="matchDraw" />
+                <ScalarProperty Name="matchWon" ColumnName="matchWon" />
+                <ScalarProperty Name="matchPlayed" ColumnName="matchPlayed" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
+                <ScalarProperty Name="championshipId" ColumnName="championshipId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
