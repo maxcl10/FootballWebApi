@@ -41,39 +41,27 @@ namespace FootballWebSiteApi.Controllers
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
-            var provider = new MultipartFormDataStreamProvider(root);
-
             try
             {
                 // Read the form data.
-                await Request.Content.ReadAsMultipartAsync(provider);
+                var files = await Request.Content.ReadAsMultipartAsync();
 
                 // This illustrates how to get the file names.
-                foreach (MultipartFileData file in provider.FileData)
+                var fileContent = await files.Contents[0].ReadAsStringAsync();
+
+                var items = JsonConvert.DeserializeObject<List<LazyRanking>>(fileContent);
+
+                using (LazyRankingRepository repository = new LazyRankingRepository())
                 {
-                    Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                    Trace.WriteLine("Server file path: " + file.LocalFileName);
-
-                    var items = LoadJson(file.LocalFileName);
-
-                    using (LazyRankingRepository repository = new LazyRankingRepository())
-                    {
-                        repository.SaveRanking(items);
-                    }
+                    repository.SaveRanking(items);
                 }
-
-
 
                 return Json(true);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return Json(e);
             }
-
-            return Json(true);
-
         }
 
         public List<LazyRanking> LoadJson(string path)
