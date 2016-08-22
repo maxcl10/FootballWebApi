@@ -47,7 +47,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
   </EntityType>
   <EntityType Name="LazyRanking">
     <Key>
-      <PropertyRef Name="team" />
+      <PropertyRef Name="rankingId" />
     </Key>
     <Property Name="team" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="position" Type="int" />
@@ -61,6 +61,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="goalDifference" Type="int" />
     <Property Name="withdaw" Type="int" />
     <Property Name="penality" Type="int" />
+    <Property Name="updatedDate" Type="datetime" />
+    <Property Name="rankingId" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Player">
     <Key>

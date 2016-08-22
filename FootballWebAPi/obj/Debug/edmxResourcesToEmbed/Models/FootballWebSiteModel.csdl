@@ -16,7 +16,6 @@
   <EntityContainer Name="FootballWebSiteDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Articles" EntityType="Self.Article" />
     <EntitySet Name="Players" EntityType="FootballWebSiteDbModel.Player" />
-    <EntitySet Name="LazyRankings" EntityType="FootballWebSiteDbModel.LazyRanking" />
     <EntitySet Name="Games" EntityType="FootballWebSiteDbModel.Game" />
     <EntitySet Name="Teams" EntityType="FootballWebSiteDbModel.Team" />
     <AssociationSet Name="FK_Game_Team" Association="FootballWebSiteDbModel.FK_Game_Team">
@@ -38,6 +37,7 @@
       <End Role="Season" EntitySet="Seasons" />
       <End Role="Championship" EntitySet="Championships" />
     </AssociationSet>
+    <EntitySet Name="LazyRankings" EntityType="FootballWebSiteDbModel.LazyRanking" />
   </EntityContainer>
   <EntityType Name="Player">
     <Key>
@@ -52,23 +52,6 @@
     <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="previousClubs" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="LazyRanking">
-    <Key>
-      <PropertyRef Name="team" />
-    </Key>
-    <Property Name="team" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="position" Type="Int32" />
-    <Property Name="points" Type="Int32" />
-    <Property Name="matchPlayed" Type="Int32" />
-    <Property Name="matchWon" Type="Int32" />
-    <Property Name="matchDraw" Type="Int32" />
-    <Property Name="matchLost" Type="Int32" />
-    <Property Name="goalsScored" Type="Int32" />
-    <Property Name="goalsAgainst" Type="Int32" />
-    <Property Name="goalDifference" Type="Int32" />
-    <Property Name="withdaw" Type="Int32" />
-    <Property Name="penality" Type="Int32" />
   </EntityType>
   <EntityType Name="Game">
     <Key>
@@ -217,4 +200,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="LazyRanking">
+    <Key>
+      <PropertyRef Name="rankingId" />
+    </Key>
+    <Property Name="team" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="position" Type="Int32" />
+    <Property Name="points" Type="Int32" />
+    <Property Name="matchPlayed" Type="Int32" />
+    <Property Name="matchWon" Type="Int32" />
+    <Property Name="matchDraw" Type="Int32" />
+    <Property Name="matchLost" Type="Int32" />
+    <Property Name="goalsScored" Type="Int32" />
+    <Property Name="goalsAgainst" Type="Int32" />
+    <Property Name="goalDifference" Type="Int32" />
+    <Property Name="withdaw" Type="Int32" />
+    <Property Name="penality" Type="Int32" />
+    <Property Name="updatedDate" Type="DateTime" Precision="3" />
+    <Property Name="rankingId" Type="Guid" Nullable="false" />
+  </EntityType>
 </Schema>

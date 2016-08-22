@@ -52,7 +52,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
         </EntityType>
         <EntityType Name="LazyRanking">
           <Key>
-            <PropertyRef Name="team" />
+            <PropertyRef Name="rankingId" />
           </Key>
           <Property Name="team" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="position" Type="int" />
@@ -66,6 +66,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
           <Property Name="goalDifference" Type="int" />
           <Property Name="withdaw" Type="int" />
           <Property Name="penality" Type="int" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="rankingId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -262,7 +264,6 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
         <EntityContainer Name="FootballWebSiteDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Articles" EntityType="Self.Article" />
           <EntitySet Name="Players" EntityType="FootballWebSiteDbModel.Player" />
-          <EntitySet Name="LazyRankings" EntityType="FootballWebSiteDbModel.LazyRanking" />
           <EntitySet Name="Games" EntityType="FootballWebSiteDbModel.Game" />
           <EntitySet Name="Teams" EntityType="FootballWebSiteDbModel.Team" />
           <AssociationSet Name="FK_Game_Team" Association="FootballWebSiteDbModel.FK_Game_Team">
@@ -284,6 +285,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
             <End Role="Season" EntitySet="Seasons" />
             <End Role="Championship" EntitySet="Championships" />
           </AssociationSet>
+          <EntitySet Name="LazyRankings" EntityType="FootballWebSiteDbModel.LazyRanking" />
         </EntityContainer>
         <EntityType Name="Player">
           <Key>
@@ -298,23 +300,6 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="previousClubs" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="LazyRanking">
-          <Key>
-            <PropertyRef Name="team" />
-          </Key>
-          <Property Name="team" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="position" Type="Int32" />
-          <Property Name="points" Type="Int32" />
-          <Property Name="matchPlayed" Type="Int32" />
-          <Property Name="matchWon" Type="Int32" />
-          <Property Name="matchDraw" Type="Int32" />
-          <Property Name="matchLost" Type="Int32" />
-          <Property Name="goalsScored" Type="Int32" />
-          <Property Name="goalsAgainst" Type="Int32" />
-          <Property Name="goalDifference" Type="Int32" />
-          <Property Name="withdaw" Type="Int32" />
-          <Property Name="penality" Type="Int32" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -463,6 +448,25 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="LazyRanking">
+          <Key>
+            <PropertyRef Name="rankingId" />
+          </Key>
+          <Property Name="team" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="Int32" />
+          <Property Name="points" Type="Int32" />
+          <Property Name="matchPlayed" Type="Int32" />
+          <Property Name="matchWon" Type="Int32" />
+          <Property Name="matchDraw" Type="Int32" />
+          <Property Name="matchLost" Type="Int32" />
+          <Property Name="goalsScored" Type="Int32" />
+          <Property Name="goalsAgainst" Type="Int32" />
+          <Property Name="goalDifference" Type="Int32" />
+          <Property Name="withdaw" Type="Int32" />
+          <Property Name="penality" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="rankingId" Type="Guid" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -495,24 +499,6 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LazyRankings">
-            <EntityTypeMapping TypeName="FootballWebSiteDbModel.LazyRanking">
-              <MappingFragment StoreEntitySet="LazyRanking">
-                <ScalarProperty Name="penality" ColumnName="penality" />
-                <ScalarProperty Name="withdaw" ColumnName="withdaw" />
-                <ScalarProperty Name="goalDifference" ColumnName="goalDifference" />
-                <ScalarProperty Name="goalsAgainst" ColumnName="goalsAgainst" />
-                <ScalarProperty Name="goalsScored" ColumnName="goalsScored" />
-                <ScalarProperty Name="matchLost" ColumnName="matchLost" />
-                <ScalarProperty Name="matchDraw" ColumnName="matchDraw" />
-                <ScalarProperty Name="matchWon" ColumnName="matchWon" />
-                <ScalarProperty Name="matchPlayed" ColumnName="matchPlayed" />
-                <ScalarProperty Name="points" ColumnName="points" />
-                <ScalarProperty Name="position" ColumnName="position" />
-                <ScalarProperty Name="team" ColumnName="team" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -614,6 +600,26 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
                 <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="teamId" ColumnName="teamId" />
                 <ScalarProperty Name="championshipId" ColumnName="championshipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LazyRankings">
+            <EntityTypeMapping TypeName="FootballWebSiteDbModel.LazyRanking">
+              <MappingFragment StoreEntitySet="LazyRanking">
+                <ScalarProperty Name="rankingId" ColumnName="rankingId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="penality" ColumnName="penality" />
+                <ScalarProperty Name="withdaw" ColumnName="withdaw" />
+                <ScalarProperty Name="goalDifference" ColumnName="goalDifference" />
+                <ScalarProperty Name="goalsAgainst" ColumnName="goalsAgainst" />
+                <ScalarProperty Name="goalsScored" ColumnName="goalsScored" />
+                <ScalarProperty Name="matchLost" ColumnName="matchLost" />
+                <ScalarProperty Name="matchDraw" ColumnName="matchDraw" />
+                <ScalarProperty Name="matchWon" ColumnName="matchWon" />
+                <ScalarProperty Name="matchPlayed" ColumnName="matchPlayed" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="team" ColumnName="team" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

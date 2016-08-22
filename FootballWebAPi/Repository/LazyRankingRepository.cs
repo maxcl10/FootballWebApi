@@ -11,7 +11,7 @@ namespace FootballWebSiteApi.Repository
 
         public IEnumerable<LazyRanking> Get()
         {
-            return entities.LazyRankings.OrderBy(o => o.position);
+            return entities.LazyRankings.Where(o => o.updatedDate == null).OrderBy(o => o.position);
         }
 
         public LazyRanking Get(string id)
@@ -41,13 +41,15 @@ namespace FootballWebSiteApi.Repository
 
         public void SaveRanking(List<LazyRanking> items)
         {
-            foreach (var lazyRanking in entities.LazyRankings)
+            var now = DateTime.Now;
+            foreach (var lazyRanking in entities.LazyRankings.Where(o => o.updatedDate == null))
             {
-                entities.LazyRankings.Remove(lazyRanking);
+                lazyRanking.updatedDate = now;
             }
 
             foreach (LazyRanking lazyRanking in items)
             {
+                lazyRanking.rankingId = Guid.NewGuid();
                 entities.LazyRankings.Add(lazyRanking);
             }
 

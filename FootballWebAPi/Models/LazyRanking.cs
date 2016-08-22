@@ -26,5 +26,7 @@ namespace FootballWebSiteApi.Models
         public Nullable<int> goalDifference { get; set; }
         public Nullable<int> withdaw { get; set; }
         public Nullable<int> penality { get; set; }
+        public Nullable<System.DateTime> updatedDate { get; set; }
+        public System.Guid rankingId { get; set; }
     }
 }
