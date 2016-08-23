@@ -30,15 +30,15 @@ namespace FootballWebSiteApi.Repository
             return Mapper.Map( entities.Teams.Single(o => o.id.ToString() == id));
         }
 
-        public JTeam Post(JTeam team)
+        public JTeam Post(JTeam jteam)
         {
-            throw new NotImplementedException();
-            //team.id = Guid.NewGuid();
+            jteam.id = Guid.NewGuid();
+            Team team = Mapper.Map(jteam);
 
-            //entities.Teams.Add(team);
-            //entities.SaveChanges();
+            entities.Teams.Add(team);
+            entities.SaveChanges();
 
-            //return team;
+            return jteam;
         }
 
         public JTeam Put(string id, JTeam team)

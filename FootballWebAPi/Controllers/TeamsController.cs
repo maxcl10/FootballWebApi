@@ -30,7 +30,6 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Post([FromBody] JTeam team)
         {
-            throw new NotImplementedException();
             if (ModelState.IsValid)
             {
                 using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
@@ -44,7 +43,6 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Put(string id, [FromBody] JTeam team)
         {
-            throw  new NotImplementedException();
             if (ModelState.IsValid)
             {
                 using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())

@@ -33,6 +33,16 @@ namespace FootballWebSiteApi.Helpers
             };
         }
 
+        internal static Team Map(JTeam jteam)
+        {
+            return new Team
+            {
+                id = jteam.id,
+                name = jteam.name,
+                shortName = jteam.shortName
+            };
+        }
+
         public static IEnumerable<JTeam> Map(IEnumerable<Team> teams)
         {
             List<JTeam> JTeams = new List<JTeam>();
