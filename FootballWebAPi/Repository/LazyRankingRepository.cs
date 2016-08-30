@@ -50,6 +50,7 @@ namespace FootballWebSiteApi.Repository
             foreach (LazyRanking lazyRanking in items)
             {
                 lazyRanking.rankingId = Guid.NewGuid();
+                lazyRanking.uploadDate = now;
                 entities.LazyRankings.Add(lazyRanking);
             }
 

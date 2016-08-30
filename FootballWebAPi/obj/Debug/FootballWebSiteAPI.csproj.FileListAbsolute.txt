@@ -187,6 +187,5 @@ C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\Newtonsoft.Json.
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\System.Net.Http.Formatting.xml
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.xml
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.WebHost.xml
-C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteAPI.csprojResolveAssemblyReference.cache
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.dll
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.pdb
