@@ -67,6 +67,10 @@
     <NavigationProperty Name="Team1" Relationship="FootballWebSiteDbModel.FK_Game_Team1" FromRole="Game" ToRole="Team" />
     <Property Name="HomeTeamScore" Type="Int32" />
     <Property Name="AwayTeamScore" Type="Int32" />
+    <Property Name="ProlongHomeTeamScore" Type="Int32" />
+    <Property Name="ProlongAwayTeamScore" Type="Int32" />
+    <Property Name="PenaltyHomeTeamScore" Type="Int32" />
+    <Property Name="PenaltyAwayTeamScore" Type="Int32" />
   </EntityType>
   <EntityType Name="Team">
     <Key>
@@ -218,5 +222,6 @@
     <Property Name="penality" Type="Int32" />
     <Property Name="updatedDate" Type="DateTime" Precision="3" />
     <Property Name="rankingId" Type="Guid" Nullable="false" />
+    <Property Name="uploadDate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

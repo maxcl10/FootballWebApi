@@ -153,6 +153,7 @@
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\PreviousGameController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,6 +201,7 @@
     <Compile Include="Models\Season.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\Staff.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
@@ -219,6 +221,7 @@
     <Compile Include="Repository\IDatabaseRepository.cs" />
     <Compile Include="Repository\LazyRankingRepository.cs" />
     <Compile Include="Repository\PlayerDatabaseRepository.cs" />
+    <Compile Include="Repository\StatsRepository.cs" />
     <Compile Include="Repository\TeamsDatabaseRepository.cs" />
   </ItemGroup>
   <ItemGroup>

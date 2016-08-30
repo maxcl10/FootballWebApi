@@ -22,6 +22,10 @@ namespace FootballWebSiteApi.Models
         public string Championship { get; set; }
         public Nullable<int> HomeTeamScore { get; set; }
         public Nullable<int> AwayTeamScore { get; set; }
+        public Nullable<int> ProlongHomeTeamScore { get; set; }
+        public Nullable<int> ProlongAwayTeamScore { get; set; }
+        public Nullable<int> PenaltyHomeTeamScore { get; set; }
+        public Nullable<int> PenaltyAwayTeamScore { get; set; }
     
         public virtual Team Team { get; set; }
         public virtual Team Team1 { get; set; }

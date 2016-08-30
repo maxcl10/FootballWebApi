@@ -33,6 +33,10 @@
     <EntitySetMapping Name="Games">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.Game">
         <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="PenaltyAwayTeamScore" ColumnName="PenaltyAwayTeamScore" />
+          <ScalarProperty Name="PenaltyHomeTeamScore" ColumnName="PenaltyHomeTeamScore" />
+          <ScalarProperty Name="ProlongAwayTeamScore" ColumnName="ProlongAwayTeamScore" />
+          <ScalarProperty Name="ProlongHomeTeamScore" ColumnName="ProlongHomeTeamScore" />
           <ScalarProperty Name="AwayTeamScore" ColumnName="AwayTeamScore" />
           <ScalarProperty Name="HomeTeamScore" ColumnName="HomeTeamScore" />
           <ScalarProperty Name="Championship" ColumnName="Championship" />
@@ -134,6 +138,7 @@
     <EntitySetMapping Name="LazyRankings">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.LazyRanking">
         <MappingFragment StoreEntitySet="LazyRanking">
+          <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
           <ScalarProperty Name="rankingId" ColumnName="rankingId" />
           <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
           <ScalarProperty Name="penality" ColumnName="penality" />

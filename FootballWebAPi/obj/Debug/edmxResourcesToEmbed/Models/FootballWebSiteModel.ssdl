@@ -44,6 +44,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="Championship" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="HomeTeamScore" Type="int" />
     <Property Name="AwayTeamScore" Type="int" />
+    <Property Name="ProlongHomeTeamScore" Type="int" />
+    <Property Name="ProlongAwayTeamScore" Type="int" />
+    <Property Name="PenaltyHomeTeamScore" Type="int" />
+    <Property Name="PenaltyAwayTeamScore" Type="int" />
   </EntityType>
   <EntityType Name="LazyRanking">
     <Key>
@@ -63,6 +67,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="penality" Type="int" />
     <Property Name="updatedDate" Type="datetime" />
     <Property Name="rankingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="uploadDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Player">
     <Key>

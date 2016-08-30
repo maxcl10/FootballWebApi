@@ -49,6 +49,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
           <Property Name="Championship" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HomeTeamScore" Type="int" />
           <Property Name="AwayTeamScore" Type="int" />
+          <Property Name="ProlongHomeTeamScore" Type="int" />
+          <Property Name="ProlongAwayTeamScore" Type="int" />
+          <Property Name="PenaltyHomeTeamScore" Type="int" />
+          <Property Name="PenaltyAwayTeamScore" Type="int" />
         </EntityType>
         <EntityType Name="LazyRanking">
           <Key>
@@ -68,6 +72,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
           <Property Name="penality" Type="int" />
           <Property Name="updatedDate" Type="datetime" />
           <Property Name="rankingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="uploadDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -315,6 +320,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <NavigationProperty Name="Team1" Relationship="FootballWebSiteDbModel.FK_Game_Team1" FromRole="Game" ToRole="Team" />
           <Property Name="HomeTeamScore" Type="Int32" />
           <Property Name="AwayTeamScore" Type="Int32" />
+          <Property Name="ProlongHomeTeamScore" Type="Int32" />
+          <Property Name="ProlongAwayTeamScore" Type="Int32" />
+          <Property Name="PenaltyHomeTeamScore" Type="Int32" />
+          <Property Name="PenaltyAwayTeamScore" Type="Int32" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -466,6 +475,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="penality" Type="Int32" />
           <Property Name="updatedDate" Type="DateTime" Precision="3" />
           <Property Name="rankingId" Type="Guid" Nullable="false" />
+          <Property Name="uploadDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -505,6 +515,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <EntitySetMapping Name="Games">
             <EntityTypeMapping TypeName="FootballWebSiteDbModel.Game">
               <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="PenaltyAwayTeamScore" ColumnName="PenaltyAwayTeamScore" />
+                <ScalarProperty Name="PenaltyHomeTeamScore" ColumnName="PenaltyHomeTeamScore" />
+                <ScalarProperty Name="ProlongAwayTeamScore" ColumnName="ProlongAwayTeamScore" />
+                <ScalarProperty Name="ProlongHomeTeamScore" ColumnName="ProlongHomeTeamScore" />
                 <ScalarProperty Name="AwayTeamScore" ColumnName="AwayTeamScore" />
                 <ScalarProperty Name="HomeTeamScore" ColumnName="HomeTeamScore" />
                 <ScalarProperty Name="Championship" ColumnName="Championship" />
@@ -606,6 +620,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <EntitySetMapping Name="LazyRankings">
             <EntityTypeMapping TypeName="FootballWebSiteDbModel.LazyRanking">
               <MappingFragment StoreEntitySet="LazyRanking">
+                <ScalarProperty Name="uploadDate" ColumnName="uploadDate" />
                 <ScalarProperty Name="rankingId" ColumnName="rankingId" />
                 <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
                 <ScalarProperty Name="penality" ColumnName="penality" />
