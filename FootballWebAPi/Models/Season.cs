@@ -17,6 +17,7 @@ namespace FootballWebSiteApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Season()
         {
+            this.PlayerTeams = new HashSet<PlayerTeam>();
             this.Championships = new HashSet<Championship>();
         }
     
@@ -24,6 +25,8 @@ namespace FootballWebSiteApi.Models
         public System.DateTime startDate { get; set; }
         public System.DateTime endDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlayerTeam> PlayerTeams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Championship> Championships { get; set; }
     }

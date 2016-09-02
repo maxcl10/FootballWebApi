@@ -19,15 +19,19 @@ namespace FootballWebSiteApi.Models
         {
             this.Games = new HashSet<Game>();
             this.Games1 = new HashSet<Game>();
+            this.PlayerTeams = new HashSet<PlayerTeam>();
         }
     
         public System.Guid id { get; set; }
         public string name { get; set; }
         public string shortName { get; set; }
+        public Nullable<bool> homeTeam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Game> Games { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Game> Games1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlayerTeam> PlayerTeams { get; set; }
     }
 }

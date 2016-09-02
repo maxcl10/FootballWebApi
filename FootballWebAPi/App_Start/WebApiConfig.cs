@@ -14,7 +14,7 @@ namespace FootballWebSiteApi
 
             config.Routes.MapHttpRoute(
                 name: "Action",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/ns/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
 

@@ -141,7 +141,6 @@ D:\Git\FootballWebApi\FootballWebApi\bin\FootballWebSiteApi.dll
 D:\Git\FootballWebApi\FootballWebApi\bin\FootballWebSiteApi.pdb
 D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.dll
 D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.pdb
-D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteAPI.csprojResolveAssemblyReference.cache
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\ApplicationInsights.config
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\roslyn\csc.exe
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

@@ -83,6 +83,15 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="position" Type="nvarchar" MaxLength="50" />
     <Property Name="previousClubs" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="PlayerTeam">
+    <Key>
+      <PropertyRef Name="playerTeamId" />
+    </Key>
+    <Property Name="playerTeamId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="playerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="teamId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="seasonId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Ranking">
@@ -150,6 +159,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="homeTeam" Type="bit" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -196,12 +206,49 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PlayerTeam_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="PlayerTeam" Type="Self.PlayerTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlayerTeam">
+        <PropertyRef Name="playerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerTeam_Season">
+    <End Role="Season" Type="Self.Season" Multiplicity="1" />
+    <End Role="PlayerTeam" Type="Self.PlayerTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlayerTeam">
+        <PropertyRef Name="seasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerTeam_Team">
+    <End Role="Team" Type="Self.Team" Multiplicity="1" />
+    <End Role="PlayerTeam" Type="Self.PlayerTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlayerTeam">
+        <PropertyRef Name="teamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="FootballWebSiteDbModelStoreContainer">
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChampionshipTeam" EntityType="Self.ChampionshipTeam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LazyRanking" EntityType="Self.LazyRanking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlayerTeam" EntityType="Self.PlayerTeam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -242,6 +289,18 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <AssociationSet Name="FK_Game_Team1" Association="Self.FK_Game_Team1">
       <End Role="Team" EntitySet="Team" />
       <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerTeam_Player" Association="Self.FK_PlayerTeam_Player">
+      <End Role="Player" EntitySet="Player" />
+      <End Role="PlayerTeam" EntitySet="PlayerTeam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerTeam_Season" Association="Self.FK_PlayerTeam_Season">
+      <End Role="Season" EntitySet="Season" />
+      <End Role="PlayerTeam" EntitySet="PlayerTeam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerTeam_Team" Association="Self.FK_PlayerTeam_Team">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="PlayerTeam" EntitySet="PlayerTeam" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

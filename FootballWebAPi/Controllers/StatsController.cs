@@ -34,5 +34,15 @@ namespace FootballWebSiteApi.Controllers
                 return Json(articles);
             }
         }
+
+        //[HttpGet]
+        //public IHttpActionResult GetPlayers()
+        //{
+        //    using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+        //    {
+        //        var teams = repository.GetPlayers(new Guid("b8bc86da-9eea-4820-a5d5-c9f57b3b7d80")).ToList();
+        //        return Json(teams);
+        //    }
+        //}
     }
 }

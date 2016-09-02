@@ -14,6 +14,12 @@ namespace FootballWebSiteApi.Models
     
     public partial class Player
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Player()
+        {
+            this.PlayerTeams = new HashSet<PlayerTeam>();
+        }
+    
         public System.Guid id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -23,5 +29,8 @@ namespace FootballWebSiteApi.Models
         public string nationality { get; set; }
         public string position { get; set; }
         public string previousClubs { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlayerTeam> PlayerTeams { get; set; }
     }
 }

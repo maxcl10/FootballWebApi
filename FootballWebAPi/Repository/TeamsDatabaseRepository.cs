@@ -25,6 +25,23 @@ namespace FootballWebSiteApi.Repository
             return Mapper.Map(entities.Teams.OrderBy(o=>o.name));
         }
 
+        public IEnumerable<JTeam> GetHomeTeams()
+        {
+            return Mapper.Map(entities.Teams.Where(o=>o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.name));
+        }
+
+        public IEnumerable<JPlayer> GetPlayers(Guid id)
+        {
+            List<JPlayer> players = new List<JPlayer>();
+            var playersId = entities.PlayerTeams.Where(o => o.teamId == id);
+            foreach (PlayerTeam playerTeam in playersId)
+            {
+                players.Add(Mapper.Map(playerTeam.Player));
+            }
+
+            return players;
+        }
+
         public JTeam Get(string id)
         {
             return Mapper.Map( entities.Teams.Single(o => o.id.ToString() == id));
@@ -57,5 +74,7 @@ namespace FootballWebSiteApi.Repository
             entities.Teams.Remove(teamToDelete);
             entities.SaveChanges();
         }
+
+       
     }
 }

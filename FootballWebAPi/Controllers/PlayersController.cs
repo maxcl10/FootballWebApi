@@ -12,7 +12,7 @@ namespace FootballWebSiteApi.Controllers
         // GET: api/Players
         public IHttpActionResult Get()
         {
-            using (IDatabaseRepository<Player> repository = new PlayerDatabaseRepository())
+            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
             {
                 var players = repository.Get().ToList();
                 return Json(players);
@@ -22,7 +22,7 @@ namespace FootballWebSiteApi.Controllers
         // GET: api/Players/5
         public IHttpActionResult Get(string id)
         {
-            using (IDatabaseRepository<Player> repository = new PlayerDatabaseRepository())
+            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
             {
                 var player = repository.Get(id);
                 return Json(player);
@@ -34,7 +34,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (IDatabaseRepository<Player> repository = new PlayerDatabaseRepository())
+                using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
                 {
                     var retPlayer = repository.Post(player);
                     return Json(retPlayer);
@@ -48,7 +48,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (IDatabaseRepository<Player> repository = new PlayerDatabaseRepository())
+                using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
                 {
 
                     var retPlayer = repository.Put(id, player);
@@ -61,7 +61,7 @@ namespace FootballWebSiteApi.Controllers
         // DELETE: api/Players/5
         public IHttpActionResult Delete(string id)
         {
-            using (IDatabaseRepository<Player> repository = new PlayerDatabaseRepository())
+            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
             {
                 repository.Delete(id);
                 return Json(true);

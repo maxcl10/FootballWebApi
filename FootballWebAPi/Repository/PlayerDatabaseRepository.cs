@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FootballWebSiteApi.Helpers;
 using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Repository
 {
-    public class PlayerDatabaseRepository : IDatabaseRepository<Player>
+    public class PlayerDatabaseRepository: IDisposable
     {
         private FootballWebSiteDbEntities entities;
 
@@ -13,9 +14,9 @@ namespace FootballWebSiteApi.Repository
         {
             entities = new FootballWebSiteDbEntities();
         }
-        public IEnumerable<Player> Get()
+        public IEnumerable<JPlayer> Get()
         {
-            return entities.Players.ToList().OrderBy(o => GetOrder(o.position));
+            return Mapper.Map( entities.Players.ToList().OrderBy(o => GetOrder(o.position)));
         }
 
         private int GetOrder(string position)
@@ -35,16 +36,15 @@ namespace FootballWebSiteApi.Repository
             }
         }
 
-        public Player Get(string id)
+        public JPlayer Get(string id)
         {
-            return entities.Players.Single(o => o.id.ToString() == id);
+            return Mapper.Map(entities.Players.Single(o => o.id.ToString() == id));
         }
 
 
         public Player Post(Player player)
         {
             player.id = Guid.NewGuid();
-
 
 
             entities.Players.Add(player);
@@ -64,7 +64,7 @@ namespace FootballWebSiteApi.Repository
             correspondingPlayer.weight = player.weight;
             correspondingPlayer.nationality = player.nationality;
             correspondingPlayer.position = player.position;
-
+            correspondingPlayer.previousClubs = player.previousClubs;
 
             entities.SaveChanges();
             return player;

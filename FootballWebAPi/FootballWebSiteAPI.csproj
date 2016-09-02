@@ -154,6 +154,7 @@
     <Compile Include="Controllers\PreviousGameController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
+    <Compile Include="Controllers\TeamPlayerController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,11 +189,15 @@
     </Compile>
     <Compile Include="Models\ICrudApi.cs" />
     <Compile Include="Models\JGame.cs" />
+    <Compile Include="Models\JPlayer.cs" />
     <Compile Include="Models\JTeam.cs" />
     <Compile Include="Models\LazyRanking.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs">
+      <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlayerTeam.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ranking.cs">

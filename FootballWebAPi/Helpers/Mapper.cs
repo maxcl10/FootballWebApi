@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Helpers
@@ -30,6 +31,32 @@ namespace FootballWebSiteApi.Helpers
                 SeasonId = game.SeasonId,
                 AwayTeamScore = game.AwayTeamScore,
                 HomeTeamScore = game.HomeTeamScore
+            };
+        }
+
+        internal static IEnumerable<JPlayer> Map(IOrderedEnumerable<Player> orderedEnumerable)
+        {
+            List<JPlayer> players = new List<JPlayer>();
+            foreach (Player player in orderedEnumerable)
+            {
+                players.Add(Map(player));
+            }
+            return players;
+        }
+
+        internal static JPlayer Map(Player player)
+        {
+            return new JPlayer
+            {
+                id = player.id,
+                position = player.position,
+                dateOfBirth = player.dateOfBirth,
+                firstName = player.firstName,
+                height = player.height,
+                lastName = player.lastName,
+                nationality = player.nationality,
+                previousClubs = player.previousClubs,
+                weight = player.weight
             };
         }
 
