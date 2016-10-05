@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FootballWebSiteApi.Models;
 using FootballWebSiteApi.Repository;
 
 namespace FootballWebSiteApi.Controllers
@@ -22,23 +23,23 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
-        [HttpGet]
-        public IHttpActionResult AddPlayer(string playerId, string teamId)
+        [HttpPost]
+        public IHttpActionResult AddPlayer(TeamPlayer teamPlayer)
         {
             using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
             {
-                repository.AddPlayer(playerId, teamId);
+                repository.AddPlayer(teamPlayer.playerId, teamPlayer.teamId);
                 return Json(true);
             }
         }
 
 
-        [HttpGet]
-        public IHttpActionResult RemovePlayer(string playerId, string teamId)
+        [HttpPost]
+        public IHttpActionResult RemovePlayer(TeamPlayer teamPlayer)
         {
             using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
             {
-                repository.RemovePlayer(playerId, teamId);
+                repository.RemovePlayer(teamPlayer.playerId, teamPlayer.teamId);
                 return Json(true);
             }
         }

@@ -216,6 +216,7 @@
     <Compile Include="Models\Team.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeamPlayer.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>FootballWebSiteModel.tt</DependentUpon>
     </Compile>
