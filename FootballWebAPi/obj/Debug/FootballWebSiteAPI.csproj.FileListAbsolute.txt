@@ -188,3 +188,4 @@ C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\bin\System.Web.Http.WebHost.xml
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.dll
 C:\Users\Maxime\Documents\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteApi.pdb
+D:\Git\FootballWebApi\FootballWebApi\obj\Debug\FootballWebSiteAPI.csprojResolveAssemblyReference.cache

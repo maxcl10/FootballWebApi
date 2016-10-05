@@ -27,10 +27,20 @@ namespace FootballWebSiteApi.Controllers
         {
             using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
             {
-                var teams = repository.AddPlayer(playerId, teamId);
-                return Json(teams);
+                repository.AddPlayer(playerId, teamId);
+                return Json(true);
             }
         }
 
+
+        [HttpGet]
+        public IHttpActionResult RemovePlayer(string playerId, string teamId)
+        {
+            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            {
+                repository.RemovePlayer(playerId, teamId);
+                return Json(true);
+            }
+        }
     }
 }
