@@ -75,6 +75,26 @@ namespace FootballWebSiteApi.Repository
             entities.SaveChanges();
         }
 
-       
+
+        public void AddPlayer(string playerId, string teamId)
+        {
+            PlayerTeam playerTeam = new PlayerTeam
+            {
+                playerId = new Guid(playerId),
+                teamId = new Guid(teamId),
+                playerTeamId = Guid.NewGuid(),
+                seasonId = entities.Seasons.First().id
+            };
+
+            entities.PlayerTeams.Add(playerTeam);
+            entities.SaveChanges();
+        }
+
+        public void RemovePlayer(string playerId, string teamId)
+        {
+            var entity = entities.PlayerTeams.SingleOrDefault(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId));
+            entities?.PlayerTeams.Remove(entity);
+            entities.SaveChanges();
+        }
     }
 }

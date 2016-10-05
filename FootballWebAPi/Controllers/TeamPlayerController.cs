@@ -22,5 +22,15 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
+        [HttpGet]
+        public IHttpActionResult AddPlayer(string playerId, string teamId)
+        {
+            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            {
+                var teams = repository.AddPlayer(playerId, teamId);
+                return Json(teams);
+            }
+        }
+
     }
 }
