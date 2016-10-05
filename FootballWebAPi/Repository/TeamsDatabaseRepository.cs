@@ -22,12 +22,12 @@ namespace FootballWebSiteApi.Repository
 
         public IEnumerable<JTeam> Get()
         {
-            return Mapper.Map(entities.Teams.OrderBy(o=>o.name));
+            return Mapper.Map(entities.Teams.OrderBy(o => o.name));
         }
 
         public IEnumerable<JTeam> GetHomeTeams()
         {
-            return Mapper.Map(entities.Teams.Where(o=>o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.name));
+            return Mapper.Map(entities.Teams.Where(o => o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.name));
         }
 
         public IEnumerable<JPlayer> GetPlayers(Guid id)
@@ -44,7 +44,7 @@ namespace FootballWebSiteApi.Repository
 
         public JTeam Get(string id)
         {
-            return Mapper.Map( entities.Teams.Single(o => o.id.ToString() == id));
+            return Mapper.Map(entities.Teams.Single(o => o.id.ToString() == id));
         }
 
         public JTeam Post(JTeam jteam)
@@ -78,21 +78,30 @@ namespace FootballWebSiteApi.Repository
 
         public void AddPlayer(string playerId, string teamId)
         {
-            PlayerTeam playerTeam = new PlayerTeam
+            //Check if already exist
+            if (entities.PlayerTeams.Any(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId)))
             {
-                playerId = new Guid(playerId),
-                teamId = new Guid(teamId),
-                playerTeamId = Guid.NewGuid(),
-                seasonId = entities.Seasons.First().id
-            };
+                throw new Exception("Player already exists");
+            }
+            else
+            {
+                PlayerTeam playerTeam = new PlayerTeam
+                {
+                    playerId = new Guid(playerId),
+                    teamId = new Guid(teamId),
+                    playerTeamId = Guid.NewGuid(),
+                    seasonId = entities.Seasons.First().id
+                };
 
-            entities.PlayerTeams.Add(playerTeam);
-            entities.SaveChanges();
+                entities.PlayerTeams.Add(playerTeam);
+                entities.SaveChanges();
+            }
+
         }
 
         public void RemovePlayer(string playerId, string teamId)
         {
-            var entity = entities.PlayerTeams.SingleOrDefault(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId));
+            var entity = entities.PlayerTeams.FirstOrDefault(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId));
             entities?.PlayerTeams.Remove(entity);
             entities.SaveChanges();
         }
