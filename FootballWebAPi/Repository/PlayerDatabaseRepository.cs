@@ -65,6 +65,10 @@ namespace FootballWebSiteApi.Repository
             correspondingPlayer.nationality = player.nationality;
             correspondingPlayer.position = player.position;
             correspondingPlayer.previousClubs = player.previousClubs;
+            correspondingPlayer.favoriteNumber = player.favoriteNumber;
+            correspondingPlayer.nickname = player.nickname;
+            correspondingPlayer.favoritePlayer = player.favoritePlayer;
+            correspondingPlayer.favoriteTeam = player.favoriteTeam;
 
             entities.SaveChanges();
             return player;

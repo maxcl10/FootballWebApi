@@ -29,7 +29,6 @@ namespace FootballWebSiteApi.Models
         public virtual DbSet<ChampionshipTeam> ChampionshipTeams { get; set; }
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<LazyRanking> LazyRankings { get; set; }
-        public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<PlayerTeam> PlayerTeams { get; set; }
         public virtual DbSet<Season> Seasons { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
@@ -38,5 +37,6 @@ namespace FootballWebSiteApi.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Championship> Championships { get; set; }
         public virtual DbSet<Ranking> Rankings { get; set; }
+        public virtual DbSet<Player> Players { get; set; }
     }
 }

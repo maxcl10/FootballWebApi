@@ -56,7 +56,11 @@ namespace FootballWebSiteApi.Helpers
                 lastName = player.lastName,
                 nationality = player.nationality,
                 previousClubs = player.previousClubs,
-                weight = player.weight
+                weight = player.weight,
+                favoriteNumber = player.favoriteNumber,
+                favoritePlayer = player.favoritePlayer,
+                favoriteTeam = player.favoriteTeam,
+                nickname = player.nickname
             };
         }
 

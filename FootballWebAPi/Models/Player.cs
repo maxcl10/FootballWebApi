@@ -23,12 +23,16 @@ namespace FootballWebSiteApi.Models
         public System.Guid id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public System.DateTime dateOfBirth { get; set; }
+        public Nullable<System.DateTime> dateOfBirth { get; set; }
         public Nullable<int> height { get; set; }
         public Nullable<int> weight { get; set; }
         public string nationality { get; set; }
         public string position { get; set; }
         public string previousClubs { get; set; }
+        public string nickname { get; set; }
+        public string favoritePlayer { get; set; }
+        public string favoriteNumber { get; set; }
+        public string favoriteTeam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlayerTeam> PlayerTeams { get; set; }
