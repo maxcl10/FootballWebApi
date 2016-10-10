@@ -169,6 +169,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="homeTeam" Type="bit" />
+          <Property Name="displayOrder" Type="int" />
+          <Property Name="displayName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -468,6 +470,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <NavigationProperty Name="Games" Relationship="FootballWebSiteDbModel.FK_Game_Team" FromRole="Team" ToRole="Game" />
           <NavigationProperty Name="Games1" Relationship="FootballWebSiteDbModel.FK_Game_Team1" FromRole="Team" ToRole="Game" />
           <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Team" FromRole="Team" ToRole="PlayerTeam" />
+          <Property Name="displayOrder" Type="Int32" />
+          <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -721,6 +725,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="FootballWebSiteDbModel.Team">
               <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+                <ScalarProperty Name="displayOrder" ColumnName="displayOrder" />
                 <ScalarProperty Name="homeTeam" ColumnName="homeTeam" />
                 <ScalarProperty Name="shortName" ColumnName="shortName" />
                 <ScalarProperty Name="name" ColumnName="name" />

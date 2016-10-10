@@ -26,6 +26,8 @@ namespace FootballWebSiteApi.Models
         public string name { get; set; }
         public string shortName { get; set; }
         public Nullable<bool> homeTeam { get; set; }
+        public Nullable<int> displayOrder { get; set; }
+        public string displayName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Game> Games { get; set; }

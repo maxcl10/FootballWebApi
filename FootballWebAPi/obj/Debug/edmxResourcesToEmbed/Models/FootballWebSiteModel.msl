@@ -63,21 +63,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Player">
-        <MappingFragment StoreEntitySet="Player">
-          <ScalarProperty Name="previousClubs" ColumnName="previousClubs" />
-          <ScalarProperty Name="position" ColumnName="position" />
-          <ScalarProperty Name="nationality" ColumnName="nationality" />
-          <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="height" ColumnName="height" />
-          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PlayerTeams">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.PlayerTeam">
         <MappingFragment StoreEntitySet="PlayerTeam">
@@ -122,6 +107,8 @@
     <EntitySetMapping Name="Teams">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.Team">
         <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="displayOrder" ColumnName="displayOrder" />
           <ScalarProperty Name="homeTeam" ColumnName="homeTeam" />
           <ScalarProperty Name="shortName" ColumnName="shortName" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -164,6 +151,25 @@
           <ScalarProperty Name="position" ColumnName="position" />
           <ScalarProperty Name="teamId" ColumnName="teamId" />
           <ScalarProperty Name="championshipId" ColumnName="championshipId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="FootballWebSiteDbModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="favoriteTeam" ColumnName="favoriteTeam" />
+          <ScalarProperty Name="favoriteNumber" ColumnName="favoriteNumber" />
+          <ScalarProperty Name="favoritePlayer" ColumnName="favoritePlayer" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="previousClubs" ColumnName="previousClubs" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -70,7 +70,9 @@ namespace FootballWebSiteApi.Helpers
             {
                 id = jteam.id,
                 name = jteam.name,
-                shortName = jteam.shortName
+                shortName = jteam.shortName,
+                displayName = jteam.displayName,
+                displayOrder = jteam.displayOrder
             };
         }
 
@@ -90,7 +92,9 @@ namespace FootballWebSiteApi.Helpers
             {
                 id = team.id,
                 name = team.name,
-                shortName = team.shortName
+                shortName = team.shortName,
+                displayOrder = team.displayOrder,
+                displayName = team.displayName
             };
         }
     }

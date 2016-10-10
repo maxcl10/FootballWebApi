@@ -5,7 +5,6 @@
     <EntitySet Name="ChampionshipTeams" EntityType="FootballWebSiteDbModel.ChampionshipTeam" />
     <EntitySet Name="Games" EntityType="FootballWebSiteDbModel.Game" />
     <EntitySet Name="LazyRankings" EntityType="FootballWebSiteDbModel.LazyRanking" />
-    <EntitySet Name="Players" EntityType="FootballWebSiteDbModel.Player" />
     <EntitySet Name="PlayerTeams" EntityType="FootballWebSiteDbModel.PlayerTeam" />
     <EntitySet Name="Seasons" EntityType="FootballWebSiteDbModel.Season" />
     <EntitySet Name="Staffs" EntityType="FootballWebSiteDbModel.Staff" />
@@ -22,10 +21,6 @@
       <End Role="Team" EntitySet="Teams" />
       <End Role="Game" EntitySet="Games" />
     </AssociationSet>
-    <AssociationSet Name="FK_PlayerTeam_Player" Association="FootballWebSiteDbModel.FK_PlayerTeam_Player">
-      <End Role="Player" EntitySet="Players" />
-      <End Role="PlayerTeam" EntitySet="PlayerTeams" />
-    </AssociationSet>
     <AssociationSet Name="FK_PlayerTeam_Season" Association="FootballWebSiteDbModel.FK_PlayerTeam_Season">
       <End Role="Season" EntitySet="Seasons" />
       <End Role="PlayerTeam" EntitySet="PlayerTeams" />
@@ -37,6 +32,11 @@
     <AssociationSet Name="FK_Championship_Season" Association="FootballWebSiteDbModel.FK_Championship_Season">
       <End Role="Season" EntitySet="Seasons" />
       <End Role="Championship" EntitySet="Championships" />
+    </AssociationSet>
+    <EntitySet Name="Players" EntityType="FootballWebSiteDbModel.Player" />
+    <AssociationSet Name="FK_PlayerTeam_Player" Association="FootballWebSiteDbModel.FK_PlayerTeam_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="PlayerTeam" EntitySet="PlayerTeams" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Article">
@@ -99,21 +99,6 @@
     <Property Name="rankingId" Type="Guid" Nullable="false" />
     <Property Name="uploadDate" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="Player">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Guid" Nullable="false" />
-    <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="height" Type="Int32" />
-    <Property Name="weight" Type="Int32" />
-    <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="previousClubs" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Player" FromRole="Player" ToRole="PlayerTeam" />
-  </EntityType>
   <EntityType Name="PlayerTeam">
     <Key>
       <PropertyRef Name="playerTeamId" />
@@ -122,9 +107,9 @@
     <Property Name="playerId" Type="Guid" Nullable="false" />
     <Property Name="teamId" Type="Guid" Nullable="false" />
     <Property Name="seasonId" Type="Guid" Nullable="false" />
-    <NavigationProperty Name="Player" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Player" FromRole="PlayerTeam" ToRole="Player" />
     <NavigationProperty Name="Season" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Season" FromRole="PlayerTeam" ToRole="Season" />
     <NavigationProperty Name="Team" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Team" FromRole="PlayerTeam" ToRole="Team" />
+    <NavigationProperty Name="Player" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Player" FromRole="PlayerTeam" ToRole="Player" />
   </EntityType>
   <EntityType Name="Season">
     <Key>
@@ -167,6 +152,8 @@
     <NavigationProperty Name="Games" Relationship="FootballWebSiteDbModel.FK_Game_Team" FromRole="Team" ToRole="Game" />
     <NavigationProperty Name="Games1" Relationship="FootballWebSiteDbModel.FK_Game_Team1" FromRole="Team" ToRole="Game" />
     <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Team" FromRole="Team" ToRole="PlayerTeam" />
+    <Property Name="displayOrder" Type="Int32" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -241,18 +228,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PlayerTeam_Player">
-    <End Type="FootballWebSiteDbModel.Player" Role="Player" Multiplicity="1" />
-    <End Type="FootballWebSiteDbModel.PlayerTeam" Role="PlayerTeam" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Player">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="PlayerTeam">
-        <PropertyRef Name="playerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PlayerTeam_Season">
     <End Type="FootballWebSiteDbModel.Season" Role="Season" Multiplicity="1" />
     <End Type="FootballWebSiteDbModel.PlayerTeam" Role="PlayerTeam" Multiplicity="*" />
@@ -286,6 +261,37 @@
       </Principal>
       <Dependent Role="Championship">
         <PropertyRef Name="seasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateOfBirth" Type="DateTime" Precision="3" Nullable="true" />
+    <Property Name="height" Type="Int32" />
+    <Property Name="weight" Type="Int32" />
+    <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="previousClubs" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="favoritePlayer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="favoriteNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="favoriteTeam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Player" FromRole="Player" ToRole="PlayerTeam" />
+  </EntityType>
+  <Association Name="FK_PlayerTeam_Player">
+    <End Type="FootballWebSiteDbModel.Player" Role="Player" Multiplicity="1" />
+    <End Type="FootballWebSiteDbModel.PlayerTeam" Role="PlayerTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlayerTeam">
+        <PropertyRef Name="playerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

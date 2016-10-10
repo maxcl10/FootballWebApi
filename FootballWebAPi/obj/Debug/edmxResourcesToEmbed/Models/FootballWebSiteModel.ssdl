@@ -76,12 +76,16 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="dateOfBirth" Type="datetime" />
     <Property Name="height" Type="int" />
     <Property Name="weight" Type="int" />
     <Property Name="nationality" Type="nvarchar" MaxLength="50" />
     <Property Name="position" Type="nvarchar" MaxLength="50" />
     <Property Name="previousClubs" Type="nvarchar" MaxLength="500" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="favoritePlayer" Type="nvarchar" MaxLength="50" />
+    <Property Name="favoriteNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="favoriteTeam" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PlayerTeam">
     <Key>
@@ -160,6 +164,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="homeTeam" Type="bit" />
+    <Property Name="displayOrder" Type="int" />
+    <Property Name="displayName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="User">
     <Key>
