@@ -27,7 +27,7 @@ namespace FootballWebSiteApi.Repository
 
         public IEnumerable<JTeam> GetHomeTeams()
         {
-            return Mapper.Map(entities.Teams.Where(o => o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.name));
+            return Mapper.Map(entities.Teams.Where(o => o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.displayOrder));
         }
 
         public IEnumerable<JPlayer> GetPlayers(Guid id)
