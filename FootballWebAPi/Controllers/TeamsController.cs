@@ -19,15 +19,6 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
-        public IHttpActionResult GetHomeTeams()
-        {
-            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
-            {
-                var teams = repository.GetHomeTeams().ToList();
-                return Json(teams);
-            }
-        }
-
 
         public IHttpActionResult Get(string id)
         {

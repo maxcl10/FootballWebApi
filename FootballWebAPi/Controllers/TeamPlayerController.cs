@@ -23,6 +23,16 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
+        [HttpGet]
+        public IHttpActionResult GetHomeTeams()
+        {
+            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            {
+                var teams = repository.GetHomeTeams().ToList();
+                return Json(teams);
+            }
+        }
+
         [HttpPost]
         public IHttpActionResult AddPlayer(TeamPlayer teamPlayer)
         {
