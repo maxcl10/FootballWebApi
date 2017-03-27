@@ -58,11 +58,6 @@ namespace FootballWebSiteApi.Repository
             var correspondingArticle = entities.Articles.Where(o => o.deletedDate.HasValue == false).Single(o => o.id.ToString() == id);
             correspondingArticle.deletedDate =DateTime.Now;
             entities.SaveChanges();
-            
-
-            //var articleToDelete=  entities.Articles.Single(o => o.id.ToString() == id);
-            //entities.Articles.Remove(articleToDelete);
-            //entities.SaveChanges();
         }
 
         public void Dispose()

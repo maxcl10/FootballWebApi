@@ -65,7 +65,7 @@ namespace FootballWebSiteApi.Repository
         {
             List<LazyRanking> items = new List<LazyRanking>();
             items = RankingExctractor.GetLazyRanking(Properties.Settings.Default.LafaUffheim1Url);
-           // SaveRanking(items);
+            SaveRanking(items);
         }
     }
 }

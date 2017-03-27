@@ -9,7 +9,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
-      <publishTime>03/08/2017 22:25:03</publishTime>
+      <publishTime>03/27/2017 21:08:17</publishTime>
     </File>
     <File Include="App_Data/Articles.xml">
       <publishTime>03/08/2017 22:25:03</publishTime>
@@ -18,7 +18,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2017 22:25:03</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
-      <publishTime>03/08/2017 22:25:03</publishTime>
+      <publishTime>03/27/2017 21:08:17</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/08/2017 22:25:07</publishTime>
@@ -27,70 +27,181 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2017 22:25:07</publishTime>
     </File>
     <File Include="bin/FootballWebSiteApi.dll">
-      <publishTime>03/25/2017 08:54:18</publishTime>
+      <publishTime>03/27/2017 21:15:12</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>03/27/2017 21:08:20</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.DependencyCollector.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
-      <publishTime>03/08/2017 22:25:09</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Web.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Microsoft.ApplicationInsights.dll">
-      <publishTime>03/08/2017 22:25:08</publishTime>
+      <publishTime>03/27/2017 21:08:20</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>03/08/2017 22:25:09</publishTime>
+      <publishTime>03/27/2017 21:08:21</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:24</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>03/08/2017 22:25:09</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>03/08/2017 22:25:09</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.Process.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>03/27/2017 21:08:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Pipes.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.AccessControl.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Claims.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Thread.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>03/27/2017 21:08:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>03/08/2017 22:25:10</publishTime>
+      <publishTime>03/27/2017 21:08:23</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>03/08/2017 22:25:09</publishTime>
@@ -114,7 +225,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2017 22:25:04</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/08/2017 22:25:06</publishTime>
+      <publishTime>03/27/2017 21:08:20</publishTime>
     </File>
     <File Include="scripts/ai.0.22.9-build00167.js">
       <publishTime>03/08/2017 22:25:06</publishTime>
@@ -123,7 +234,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2017 22:25:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/25/2017 08:55:39</publishTime>
+      <publishTime>03/27/2017 21:33:20</publishTime>
     </File>
   </ItemGroup>
 </Project>
