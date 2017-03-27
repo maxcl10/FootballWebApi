@@ -62,6 +62,18 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
+        [Route("UpdateRankingFromLafa")]
+        [HttpGet]
+        public IHttpActionResult UpdateRankingFromLafa()
+        {
+            using (LazyRankingRepository repository = new LazyRankingRepository())
+            {
+                repository.UpdateRanking();
+            }
+
+            return Ok();
+        }
+
         public List<LazyRanking> LoadJson(string path)
         {
             using (StreamReader r = new StreamReader(path))

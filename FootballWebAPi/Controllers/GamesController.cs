@@ -52,8 +52,10 @@ namespace FootballWebSiteApi.Controllers
             using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
             {
                 repository.Delete(id);
-                return Json(true);
+                return Ok(true);
             }
         }
+
+    
     }
 }

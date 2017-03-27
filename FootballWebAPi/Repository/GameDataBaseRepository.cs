@@ -115,7 +115,9 @@ namespace FootballWebSiteApi.Repository
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            var correspondingGame = entities.Games.Single(o => o.Id.ToString() == id);
+            entities.Games.Remove(correspondingGame);
+            entities.SaveChanges();
         }
 
         public void Dispose()

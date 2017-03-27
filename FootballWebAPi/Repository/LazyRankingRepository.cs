@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
+using FootballWebSiteApi.Helpers;
 using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Repository
@@ -55,6 +57,15 @@ namespace FootballWebSiteApi.Repository
             }
 
             entities.SaveChanges();
+        }
+
+
+     
+        public void UpdateRanking()
+        {
+            List<LazyRanking> items = new List<LazyRanking>();
+            items = RankingExctractor.GetLazyRanking(Properties.Settings.Default.LafaUffheim1Url);
+           // SaveRanking(items);
         }
     }
 }
