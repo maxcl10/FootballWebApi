@@ -17,7 +17,7 @@ namespace FootballWebSiteApi.Controllers
         {
             using (IDatabaseRepository<Article> repository = new ArticleDatabaseRepository())
             {
-                var articles = repository.Get().ToList();
+                var articles = repository.Get().Take(20).ToList();
                 return Json(articles);
             }
 

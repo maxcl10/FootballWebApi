@@ -24,9 +24,7 @@ namespace FootballWebSiteApi.Controllers
             {
                 return Json(repository.Get().ToList());
             }
-
         }
-
 
         public IHttpActionResult Get(string id)
         {

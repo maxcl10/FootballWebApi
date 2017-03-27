@@ -49,10 +49,11 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Delete(string id)
         {
-            throw new NotImplementedException();
+            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            {
+                repository.Delete(id);
+                return Json(true);
+            }
         }
-
-
-
     }
 }
