@@ -17,7 +17,9 @@ namespace FootballWebSiteApi.Models
         public System.Guid id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public System.DateTime dateOfBirth { get; set; }
+        public Nullable<System.DateTime> dateOfBirth { get; set; }
         public string position { get; set; }
+        public Nullable<System.Guid> teamId { get; set; }
+        public Nullable<System.Guid> seasonId { get; set; }
     }
 }

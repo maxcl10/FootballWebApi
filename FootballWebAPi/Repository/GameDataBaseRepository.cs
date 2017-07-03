@@ -22,7 +22,8 @@ namespace FootballWebSiteApi.Repository
         /// <returns></returns>
         public IEnumerable<JGame> Get()
         {
-            return Mapper.Map(entities.Games.OrderBy(o => o.MatchDate).Include("Team").Include("Team1"));
+            var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
+            return Mapper.Map(entities.Games.Where(o => o.SeasonId == currentSeasonId).OrderBy(o => o.MatchDate).Include("Team").Include("Team1"));
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace FootballWebSiteApi.Repository
                 Id = Guid.NewGuid(),
                 MatchDate = jgame.MatchDate,
                 Championship = jgame.Championship,
-                SeasonId = entities.Seasons.First().id,
+                SeasonId = entities.Seasons.Single(o=>o.currentSeason).id,
                 Team = homeTeam,
                 Team1 = awayTeam
             };

@@ -140,6 +140,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="startDate" Type="date" Nullable="false" />
           <Property Name="endDate" Type="date" Nullable="false" />
+          <Property Name="currentSeason" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -148,8 +149,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="dateOfBirth" Type="datetime" />
           <Property Name="position" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="teamId" Type="uniqueidentifier" />
+          <Property Name="seasonId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -438,6 +441,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Season" FromRole="Season" ToRole="PlayerTeam" />
           <NavigationProperty Name="Championships" Relationship="FootballWebSiteDbModel.FK_Championship_Season" FromRole="Season" ToRole="Championship" />
+          <Property Name="currentSeason" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -446,8 +450,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
           <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="teamId" Type="Guid" />
+          <Property Name="seasonId" Type="Guid" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -694,6 +700,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <EntitySetMapping Name="Seasons">
             <EntityTypeMapping TypeName="FootballWebSiteDbModel.Season">
               <MappingFragment StoreEntitySet="Season">
+                <ScalarProperty Name="currentSeason" ColumnName="currentSeason" />
                 <ScalarProperty Name="endDate" ColumnName="endDate" />
                 <ScalarProperty Name="startDate" ColumnName="startDate" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -703,6 +710,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
           <EntitySetMapping Name="Staffs">
             <EntityTypeMapping TypeName="FootballWebSiteDbModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="seasonId" ColumnName="seasonId" />
+                <ScalarProperty Name="teamId" ColumnName="teamId" />
                 <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />

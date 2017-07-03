@@ -90,7 +90,7 @@ namespace FootballWebSiteApi.Repository
                     playerId = new Guid(playerId),
                     teamId = new Guid(teamId),
                     playerTeamId = Guid.NewGuid(),
-                    seasonId = entities.Seasons.First().id
+                    seasonId = entities.Seasons.Single(o=>o.currentSeason).id
                 };
 
                 entities.PlayerTeams.Add(playerTeam);

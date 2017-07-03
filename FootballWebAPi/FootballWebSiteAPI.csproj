@@ -164,6 +164,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BusinessLogic.cs" />
     <Compile Include="Helpers\Mapper.cs" />
     <Compile Include="Helpers\RankingExctractor.cs" />
     <Compile Include="Models\Article.cs">
@@ -238,6 +239,7 @@
     <Compile Include="Repository\IDatabaseRepository.cs" />
     <Compile Include="Repository\LazyRankingRepository.cs" />
     <Compile Include="Repository\PlayerDatabaseRepository.cs" />
+    <Compile Include="Repository\SeasonDatabaseRepository.cs" />
     <Compile Include="Repository\StatsRepository.cs" />
     <Compile Include="Repository\TeamsDatabaseRepository.cs" />
   </ItemGroup>
