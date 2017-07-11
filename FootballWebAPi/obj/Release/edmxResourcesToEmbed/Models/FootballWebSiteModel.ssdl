@@ -135,6 +135,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
     <Property Name="endDate" Type="date" Nullable="false" />
+    <Property Name="currentSeason" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -143,8 +144,10 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="dateOfBirth" Type="datetime" />
     <Property Name="position" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="teamId" Type="uniqueidentifier" />
+    <Property Name="seasonId" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

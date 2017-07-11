@@ -33,7 +33,8 @@ namespace FootballWebSiteApi.Repository
         public IEnumerable<JPlayer> GetPlayers(Guid id)
         {
             List<JPlayer> players = new List<JPlayer>();
-            var playersId = entities.PlayerTeams.Where(o => o.teamId == id);
+            var currentSeason = entities.Seasons.First(p => p.currentSeason);
+            var playersId = entities.PlayerTeams.Where(o => o.teamId == id && o.seasonId == currentSeason.id);
             foreach (PlayerTeam playerTeam in playersId)
             {
                 players.Add(Mapper.Map(playerTeam.Player));
@@ -78,8 +79,10 @@ namespace FootballWebSiteApi.Repository
 
         public void AddPlayer(string playerId, string teamId)
         {
+            var currentSeason = entities.Seasons.First(o => o.currentSeason);
+
             //Check if already exist
-            if (entities.PlayerTeams.Any(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId)))
+            if (entities.PlayerTeams.Any(o => o.playerId == new Guid(playerId) && o.teamId == new Guid(teamId) && o.seasonId == currentSeason.id))
             {
                 throw new Exception("Player already exists");
             }
@@ -90,7 +93,7 @@ namespace FootballWebSiteApi.Repository
                     playerId = new Guid(playerId),
                     teamId = new Guid(teamId),
                     playerTeamId = Guid.NewGuid(),
-                    seasonId = entities.Seasons.Single(o=>o.currentSeason).id
+                    seasonId = currentSeason.id
                 };
 
                 entities.PlayerTeams.Add(playerTeam);

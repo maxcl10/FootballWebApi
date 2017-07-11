@@ -76,6 +76,7 @@
     <EntitySetMapping Name="Seasons">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.Season">
         <MappingFragment StoreEntitySet="Season">
+          <ScalarProperty Name="currentSeason" ColumnName="currentSeason" />
           <ScalarProperty Name="endDate" ColumnName="endDate" />
           <ScalarProperty Name="startDate" ColumnName="startDate" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -85,6 +86,8 @@
     <EntitySetMapping Name="Staffs">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.Staff">
         <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="seasonId" ColumnName="seasonId" />
+          <ScalarProperty Name="teamId" ColumnName="teamId" />
           <ScalarProperty Name="position" ColumnName="position" />
           <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />

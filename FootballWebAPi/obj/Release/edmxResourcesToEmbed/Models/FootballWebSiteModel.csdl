@@ -120,6 +120,7 @@
     <Property Name="endDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="PlayerTeams" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Season" FromRole="Season" ToRole="PlayerTeam" />
     <NavigationProperty Name="Championships" Relationship="FootballWebSiteDbModel.FK_Championship_Season" FromRole="Season" ToRole="Championship" />
+    <Property Name="currentSeason" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -128,8 +129,10 @@
     <Property Name="id" Type="Guid" Nullable="false" />
     <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
     <Property Name="position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="teamId" Type="Guid" />
+    <Property Name="seasonId" Type="Guid" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

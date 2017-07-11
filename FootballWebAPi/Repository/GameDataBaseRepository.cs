@@ -32,7 +32,13 @@ namespace FootballWebSiteApi.Repository
         /// <returns></returns>
         public JGame GetNext()
         {
-            return Mapper.Map(entities.Games.Where(o => o.MatchDate > DateTime.Now).OrderBy(o => o.MatchDate).Include("Team").Include("Team1").First());
+            var nextGame = entities.Games.Where(o => o.MatchDate > DateTime.Now).OrderBy(o => o.MatchDate).Include("Team").Include("Team1").FirstOrDefault();
+            if (nextGame == null)
+            {
+                return null;
+            }
+
+            return Mapper.Map(nextGame);
         }
 
         /// <summary>
