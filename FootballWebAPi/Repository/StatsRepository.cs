@@ -18,7 +18,10 @@ namespace FootballWebSiteApi.Repository
         public List<string> GetShape()
         {
             List<string> shapes = new List<string>();
-            var games = entities.Games.Where(o => o.HomeTeamScore != null && o.AwayTeamScore != null).OrderBy(o => o.MatchDate);
+            var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
+            var games = entities.Games.Where(o => o.HomeTeamScore != null 
+            && o.AwayTeamScore != null
+            && o.SeasonId == currentSeasonId).OrderBy(o => o.MatchDate);
             foreach (var game in games)
             {
                 if (game.HomeTeamScore == game.AwayTeamScore) //Draw
