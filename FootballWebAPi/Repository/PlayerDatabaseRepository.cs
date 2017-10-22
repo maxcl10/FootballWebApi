@@ -6,7 +6,7 @@ using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Repository
 {
-    public class PlayerDatabaseRepository: IDisposable
+    public class PlayerDatabaseRepository : IDisposable
     {
         private FootballWebSiteDbEntities entities;
 
@@ -14,9 +14,17 @@ namespace FootballWebSiteApi.Repository
         {
             entities = new FootballWebSiteDbEntities();
         }
-        public IEnumerable<JPlayer> Get()
+        public IEnumerable<JPlayer> Get(bool current = false)
         {
-            return Mapper.Map( entities.Players.ToList().OrderBy(o => GetOrder(o.position)));
+            var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
+            if (current)
+            {
+                return Mapper.Map(entities.Players.Where(o => o.PlayerTeams.Any(s => s.seasonId == currentSeasonId)).ToList().OrderBy(p => GetOrder(p.position)));
+            }
+            else
+            {
+                return Mapper.Map(entities.Players.ToList().OrderBy(p => GetOrder(p.position)));
+            }
         }
 
         private int GetOrder(string position)

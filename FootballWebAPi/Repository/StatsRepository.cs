@@ -19,7 +19,7 @@ namespace FootballWebSiteApi.Repository
         {
             List<string> shapes = new List<string>();
             var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
-            var games = entities.Games.Where(o => o.HomeTeamScore != null 
+            var games = entities.Games.Where(o => o.HomeTeamScore != null
             && o.AwayTeamScore != null
             && o.SeasonId == currentSeasonId).OrderBy(o => o.MatchDate);
             foreach (var game in games)
@@ -27,7 +27,7 @@ namespace FootballWebSiteApi.Repository
                 if (game.HomeTeamScore == game.AwayTeamScore) //Draw
                 {
                     //penalty
-                    if (game.PenaltyAwayTeamScore != null && game.PenaltyHomeTeamScore != null) 
+                    if (game.PenaltyAwayTeamScore != null && game.PenaltyHomeTeamScore != null)
                     {
                         if (game.Team.id.ToString() == "b8bc86da-9eea-4820-a5d5-c9f57b3b7d80")
                         {
@@ -54,7 +54,7 @@ namespace FootballWebSiteApi.Repository
                         }
                     }
                     // prologation
-                    else if (game.ProlongAwayTeamScore != null && game.ProlongHomeTeamScore != null) 
+                    else if (game.ProlongAwayTeamScore != null && game.ProlongHomeTeamScore != null)
                     {
                         if (game.Team.id.ToString() == "b8bc86da-9eea-4820-a5d5-c9f57b3b7d80")    //prolong uffheim home
                         {
@@ -114,7 +114,8 @@ namespace FootballWebSiteApi.Repository
 
         public object GetRankingHistory()
         {
-            return entities.LazyRankings.Where(o => o.team == "Uffheim F.C.").OrderBy(o => o.uploadDate).Select(o => new
+            var currentSeasonId = entities.Seasons.Single(o => o.currentSeason);
+            return entities.LazyRankings.Where(o => o.team == "Uffheim F.C." && o.uploadDate > currentSeasonId.startDate).OrderBy(o => o.uploadDate).Select(o => new
             {
                 o.position,
                 o.uploadDate

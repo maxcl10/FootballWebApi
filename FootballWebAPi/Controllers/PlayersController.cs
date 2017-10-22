@@ -19,11 +19,17 @@ namespace FootballWebSiteApi.Controllers
             }
         }
 
+
         // GET: api/Players/5
         public IHttpActionResult Get(string id)
         {
             using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
             {
+                if (id == "current")
+                {
+                    var players = repository.Get(true).ToList();
+                    return Json(players);
+                }
                 var player = repository.Get(id);
                 return Json(player);
             }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LafaUffheim1Url" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://lafa.fff.fr/competitions/php/championnat/championnat_classement.php?sa_no=2016&amp;cp_no=328620&amp;ph_no=1&amp;gp_no=</Value>
+      <Value Profile="(Default)">https://lgef.fff.fr/competitions/?id=338214&amp;poule=4&amp;phase=1&amp;type=ch&amp;tab=ranking</Value>
     </Setting>
   </Settings>
 </SettingsFile>
