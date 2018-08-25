@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Models;
 using FootballWebSiteApi.Repository;
 
@@ -12,7 +13,7 @@ namespace FootballWebSiteApi.Controllers
         // GET: api/Players
         public IHttpActionResult Get()
         {
-            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+            using (PlayerRepository repository = new PlayerRepository())
             {
                 var players = repository.Get().ToList();
                 return Json(players);
@@ -23,7 +24,7 @@ namespace FootballWebSiteApi.Controllers
         // GET: api/Players/5
         public IHttpActionResult Get(string id)
         {
-            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+            using (PlayerRepository repository = new PlayerRepository())
             {
                 if (id == "current")
                 {
@@ -40,7 +41,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+                using (PlayerRepository repository = new PlayerRepository())
                 {
                     var retPlayer = repository.Post(player);
                     return Json(retPlayer);
@@ -54,7 +55,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+                using (PlayerRepository repository = new PlayerRepository())
                 {
 
                     var retPlayer = repository.Put(id, player);
@@ -67,7 +68,7 @@ namespace FootballWebSiteApi.Controllers
         // DELETE: api/Players/5
         public IHttpActionResult Delete(string id)
         {
-            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+            using (PlayerRepository repository = new PlayerRepository())
             {
                 repository.Delete(id);
                 return Json(true);

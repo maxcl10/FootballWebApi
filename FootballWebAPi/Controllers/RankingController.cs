@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Models;
 using FootballWebSiteApi.Repository;
 using Newtonsoft.Json;

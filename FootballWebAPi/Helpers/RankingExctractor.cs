@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Models;
 using HtmlAgilityPack;
 using Newtonsoft.Json;

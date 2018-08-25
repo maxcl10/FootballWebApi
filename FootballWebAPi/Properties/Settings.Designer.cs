@@ -12,7 +12,7 @@ namespace FootballWebSiteApi.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,10 +25,19 @@ namespace FootballWebSiteApi.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://lgef.fff.fr/competitions/?id=338214&poule=4&phase=1&type=ch&tab=ranking")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://lgef.fff.fr/competitions/?id=351895&poule=6&phase=1&type=ch&tab=resultat")]
         public string LafaUffheim1Url {
             get {
                 return ((string)(this["LafaUffheim1Url"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("316B0560-7310-4D95-B5F1-A64B629C5C94")]
+        public string OwnerId {
+            get {
+                return ((string)(this["OwnerId"]));
             }
         }
     }

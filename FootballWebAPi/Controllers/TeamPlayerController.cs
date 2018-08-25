@@ -16,7 +16,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpGet]
         public IHttpActionResult GetPlayers(string id)
         {
-            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            using (TeamsRepository repository = new TeamsRepository())
             {
                 var teams = repository.GetPlayers(new Guid(id)).ToList();
                 return Json(teams);
@@ -26,7 +26,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpGet]
         public IHttpActionResult GetCurrentPlayers()
         {
-            using (PlayerDatabaseRepository repository = new PlayerDatabaseRepository())
+            using (PlayerRepository repository = new PlayerRepository())
             {
                 var teams = repository.Get(true).ToList();
                 return Json(teams);
@@ -36,7 +36,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpGet]
         public IHttpActionResult GetHomeTeams()
         {
-            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            using (TeamsRepository repository = new TeamsRepository())
             {
                 var teams = repository.GetHomeTeams().ToList();
                 return Json(teams);
@@ -46,7 +46,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpPost]
         public IHttpActionResult AddPlayer(TeamPlayer teamPlayer)
         {
-            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            using (TeamsRepository repository = new TeamsRepository())
             {
                 repository.AddPlayer(teamPlayer.playerId, teamPlayer.teamId);
                 return Json(true);
@@ -57,7 +57,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpPost]
         public IHttpActionResult RemovePlayer(TeamPlayer teamPlayer)
         {
-            using (TeamsDatabaseRepository repository = new TeamsDatabaseRepository())
+            using (TeamsRepository repository = new TeamsRepository())
             {
                 repository.RemovePlayer(teamPlayer.playerId, teamPlayer.teamId);
                 return Json(true);

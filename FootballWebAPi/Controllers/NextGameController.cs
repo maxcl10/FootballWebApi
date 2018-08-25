@@ -10,7 +10,7 @@ namespace FootballWebSiteApi.Controllers
         // GET: api/NextGame
         public IHttpActionResult Get()
         {
-            using (GameDataBaseRepository repository = new GameDataBaseRepository())
+            using (GameRepository repository = new GameRepository())
             {
                 var nextGame = repository.GetNext();
                 return Json(nextGame);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FootballWebSiteDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Article">
     <Key>
       <PropertyRef Name="id" />
@@ -12,15 +12,14 @@
     <Property Name="modifiedDate" Type="datetime" />
     <Property Name="deletedDate" Type="datetime" />
     <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="draft" Type="bit" />
+    <Property Name="ownerId" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Championship">
     <Key>
-      <PropertyRef Name="name" />
-      <PropertyRef Name="seasonId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="uniqueidentifier" />
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="seasonId" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
@@ -48,6 +47,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="ProlongAwayTeamScore" Type="int" />
     <Property Name="PenaltyHomeTeamScore" Type="int" />
     <Property Name="PenaltyAwayTeamScore" Type="int" />
+    <Property Name="ownerId" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="LazyRanking">
     <Key>
@@ -65,9 +65,16 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="goalDifference" Type="int" />
     <Property Name="withdaw" Type="int" />
     <Property Name="penality" Type="int" />
-    <Property Name="updatedDate" Type="datetime" />
     <Property Name="rankingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="updatedDate" Type="datetime" />
     <Property Name="uploadDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="ownerId" />
+    </Key>
+    <Property Name="ownerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Player">
     <Key>
@@ -84,8 +91,8 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Championship' does not have 
     <Property Name="previousClubs" Type="nvarchar" MaxLength="500" />
     <Property Name="nickname" Type="nvarchar" MaxLength="50" />
     <Property Name="favoritePlayer" Type="nvarchar" MaxLength="50" />
-    <Property Name="favoriteNumber" Type="nvarchar" MaxLength="10" />
     <Property Name="favoriteTeam" Type="nvarchar" MaxLength="50" />
+    <Property Name="favoriteNumber" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="PlayerTeam">
     <Key>
@@ -127,6 +134,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="goalDifference" Type="int" Nullable="false" />
     <Property Name="withdraw" Type="int" Nullable="false" />
     <Property Name="penality" Type="int" Nullable="false" />
+    <Property Name="SeasonId" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="Season">
     <Key>
@@ -135,6 +143,7 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
     <Property Name="endDate" Type="date" Nullable="false" />
+    <Property Name="currentSeason" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -146,26 +155,17 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
     <Property Name="position" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="Team">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="shortName" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="shortName" Type="nchar" MaxLength="20" Nullable="false" />
     <Property Name="homeTeam" Type="bit" />
     <Property Name="displayOrder" Type="int" />
     <Property Name="displayName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ownerId" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -175,7 +175,20 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <Property Name="alias" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="emailAddress" Type="nchar" MaxLength="70" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ownerId" Type="uniqueidentifier" />
   </EntityType>
+  <Association Name="FK_Article_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ownerId" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="ownerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Championship_Season">
     <End Role="Season" Type="Self.Season" Multiplicity="1" />
     <End Role="Championship" Type="Self.Championship" Multiplicity="*" />
@@ -185,6 +198,18 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
       </Principal>
       <Dependent Role="Championship">
         <PropertyRef Name="seasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Game_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ownerId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="ownerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -248,25 +273,43 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="FootballWebSiteDbModelStoreContainer">
+  <Association Name="FK_Team_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="Team" Type="Self.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ownerId" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="ownerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ownerId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ownerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreContainer">
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Championship" EntityType="Self.Championship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChampionshipTeam" EntityType="Self.ChampionshipTeam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LazyRanking" EntityType="Self.LazyRanking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlayerTeam" EntityType="Self.PlayerTeam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Championship" EntityType="Self.Championship" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Championship].[id] AS [id], 
-    [Championship].[name] AS [name], 
-    [Championship].[seasonId] AS [seasonId]
-    FROM [dbo].[Championship] AS [Championship]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="Ranking" EntityType="Self.Ranking" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Ranking].[championshipId] AS [championshipId], 
@@ -281,12 +324,21 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     [Ranking].[goalsAgainst] AS [goalsAgainst], 
     [Ranking].[goalDifference] AS [goalDifference], 
     [Ranking].[withdraw] AS [withdraw], 
-    [Ranking].[penality] AS [penality]
+    [Ranking].[penality] AS [penality], 
+    [Ranking].[SeasonId] AS [SeasonId]
     FROM [dbo].[Ranking] AS [Ranking]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Article_Owner" Association="Self.FK_Article_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
     <AssociationSet Name="FK_Championship_Season" Association="Self.FK_Championship_Season">
       <End Role="Season" EntitySet="Season" />
       <End Role="Championship" EntitySet="Championship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Game_Owner" Association="Self.FK_Game_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Game" EntitySet="Game" />
     </AssociationSet>
     <AssociationSet Name="FK_Game_Team" Association="Self.FK_Game_Team">
       <End Role="Team" EntitySet="Team" />
@@ -307,6 +359,14 @@ warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a pri
     <AssociationSet Name="FK_PlayerTeam_Team" Association="Self.FK_PlayerTeam_Team">
       <End Role="Team" EntitySet="Team" />
       <End Role="PlayerTeam" EntitySet="PlayerTeam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Team_Owner" Association="Self.FK_Team_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Team" EntitySet="Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Owner" Association="Self.FK_User_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

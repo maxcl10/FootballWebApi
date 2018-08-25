@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Helpers;
 using FootballWebSiteApi.Models;
 

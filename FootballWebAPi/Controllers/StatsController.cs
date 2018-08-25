@@ -25,6 +25,16 @@ namespace FootballWebSiteApi.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult GetStrickers()
+        {
+            using (StatsRepository repository = new StatsRepository())
+            {
+                var strickers = repository.GetStrickers();
+                return Json(strickers);
+            }
+        }
+
+        [HttpGet]
         //[Route("api/Stats")]
         public IHttpActionResult GetRankingHistory()
         {

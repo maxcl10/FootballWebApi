@@ -1,4 +1,5 @@
-﻿using FootballWebSiteApi.Models;
+﻿using FootballWebSiteApi.Entities;
+using FootballWebSiteApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

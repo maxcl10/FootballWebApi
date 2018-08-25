@@ -12,7 +12,7 @@ namespace FootballWebSiteApi.Controllers
     {
         public IHttpActionResult Get()
         {
-            using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
+            using (IDatabaseRepository<JTeam> repository = new TeamsRepository())
             {
                 var teams = repository.Get().ToList();
                 return Json(teams);
@@ -22,7 +22,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Get(string id)
         {
-            using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
+            using (IDatabaseRepository<JTeam> repository = new TeamsRepository())
             {
                 var team = repository.Get(id);
                 return Json(team);
@@ -33,7 +33,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
+                using (IDatabaseRepository<JTeam> repository = new TeamsRepository())
                 {
                     var retTeam = repository.Post(team);
                     return Json(retTeam);
@@ -46,7 +46,7 @@ namespace FootballWebSiteApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
+                using (IDatabaseRepository<JTeam> repository = new TeamsRepository())
                 {
 
                     var retTeam = repository.Put(id, team);
@@ -58,7 +58,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Delete(string id)
         {
-            using (IDatabaseRepository<JTeam> repository = new TeamsDatabaseRepository())
+            using (IDatabaseRepository<JTeam> repository = new TeamsRepository())
             {
                 repository.Delete(id);
                 return Json(true);

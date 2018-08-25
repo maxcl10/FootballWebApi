@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FootballWebSiteApi.Entities;
+using FootballWebSiteApi.Helpers;
 using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Repository
@@ -13,6 +15,15 @@ namespace FootballWebSiteApi.Repository
         public StatsRepository()
         {
             entities = new FootballWebSiteDbEntities();
+        }
+
+        public List<JStricker> GetStrickers()
+        {
+            var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
+
+            var stats = entities.PlayerTeams.Where(o => o.seasonId == currentSeasonId && o.Team.ownerId.ToString() == Properties.Settings.Default.OwnerId && o.Team.displayOrder == 1);
+
+            return Mapper.Map(stats);            
         }
 
         public List<string> GetShape()

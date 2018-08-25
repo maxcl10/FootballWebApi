@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using FootballWebSiteApi.Models;
+using FootballWebSiteApi.Helpers;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Repository;
+using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Controllers
 {
@@ -13,7 +15,7 @@ namespace FootballWebSiteApi.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            using (IDatabaseRepository<JGame> repository = new GameRepository())
             {
                 var games = repository.Get().ToList();
                 return Json(games);
@@ -22,7 +24,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Get(string id)
         {
-            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            using (IDatabaseRepository<JGame> repository = new GameRepository())
             {
                 var games = repository.Get(id);
                 return Json(games);
@@ -31,7 +33,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Post(JGame value)
         {
-            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            using (IDatabaseRepository<JGame> repository = new GameRepository())
             {
                 var game = repository.Post(value);
                 return Json(game);
@@ -40,7 +42,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Put(string id, JGame value)
         {
-            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            using (IDatabaseRepository<JGame> repository = new GameRepository())
             {
                 var game = repository.Put(id, value);
                 return Json(game);
@@ -49,7 +51,7 @@ namespace FootballWebSiteApi.Controllers
 
         public IHttpActionResult Delete(string id)
         {
-            using (IDatabaseRepository<JGame> repository = new GameDataBaseRepository())
+            using (IDatabaseRepository<JGame> repository = new GameRepository())
             {
                 repository.Delete(id);
                 return Ok(true);

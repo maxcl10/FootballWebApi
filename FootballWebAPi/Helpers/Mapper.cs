@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FootballWebSiteApi.Entities;
 using FootballWebSiteApi.Models;
 
 namespace FootballWebSiteApi.Helpers
@@ -17,7 +18,69 @@ namespace FootballWebSiteApi.Helpers
             return Jgames;
         }
 
-        public static JGame Map(Game game)
+        internal static JSponsor Map(Sponsor sponsor)
+        {
+            return new JSponsor
+            {
+                logoUrl = sponsor.logoUrl,
+                orderIndex = sponsor.orderIndex,
+                siteUrl = sponsor.siteUrl,
+                sponsorId = sponsor.sponsorId
+            };
+        }
+
+        internal static List<JStricker> Map(IQueryable<PlayerTeam> stats)
+        {
+            List<JStricker> jStrickers = new List<JStricker>();
+            foreach (PlayerTeam stat in stats)
+            {
+                jStrickers.Add(Map(stat));
+            }
+            return jStrickers;
+        }
+
+        private static JStricker Map(PlayerTeam stat)
+        {
+            return new JStricker
+            {
+                playerName = stat.Player.firstName + " " + stat.Player.lastName,
+                playerId = stat.playerId,
+                championshipGoals = stat.championshipGoals,
+                nationalCupGoals = stat.nationalCupGoals,
+                otherCupGoals = stat.otherCupGoals,
+                regionalCupGoals = stat.regionalCupGoals
+            };
+        }
+
+        internal static List<JSponsor> Map(IOrderedQueryable<Sponsor> sponsors)
+        {
+            List<JSponsor> jSponsors = new List<JSponsor>();
+            foreach (var sponsor in sponsors)
+            {
+                jSponsors.Add(Map(sponsor));
+            }
+            return jSponsors;
+        }
+
+        internal static JOwner Map(Owner owner)
+        {
+            return new JOwner
+            {
+                address = owner.address,
+                city = owner.city,
+                emailAddress = owner.emailAddress,
+                facebook = owner.facebook,
+                history = owner.history,
+                name = owner.name,
+                ownerId = owner.ownerId,
+                phoneNumber = owner.phoneNumber,
+                stadium = owner.stadium,
+                youtube = owner.youtube,
+                zipCode = owner.zipCode,
+            };
+        }
+
+        public static JGame Map(Entities.Game game)
         {
             return new JGame
             {
@@ -34,17 +97,43 @@ namespace FootballWebSiteApi.Helpers
             };
         }
 
-        internal static IEnumerable<JPlayer> Map(IOrderedEnumerable<Player> orderedEnumerable)
+        public static IEnumerable<JArticle> Map(IEnumerable<Article> articles)
         {
-            List<JPlayer> players = new List<JPlayer>();
-            foreach (Player player in orderedEnumerable)
+            List<JArticle> jArticles = new List<JArticle>();
+            foreach (Article article in articles)
             {
-                players.Add(Map(player));
+                jArticles.Add(Map(article));
             }
-            return players;
+            return jArticles;
         }
 
-        internal static JPlayer Map(Player player)
+        public static JArticle Map(Article article)
+        {
+            return new JArticle
+            {
+                id = article.id,
+                body = article.body,
+                creationDate = article.creationDate,
+                deletedDate = article.deletedDate,
+                draft = article.draft,
+                modifiedDate = article.modifiedDate,
+                publishedDate = article.publishedDate,
+                publisher = article.publisher,
+                title = article.title
+            };
+        }
+
+        internal static IEnumerable<JPlayer> Map(IOrderedEnumerable<Player> orderedEnumerable)
+        {
+            List<JPlayer> jPlayers = new List<JPlayer>();
+            foreach (Player player in orderedEnumerable)
+            {
+                jPlayers.Add(Map(player));
+            }
+            return jPlayers;
+        }
+
+        internal static JPlayer Map(Entities.Player player)
         {
             return new JPlayer
             {
