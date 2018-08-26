@@ -111,6 +111,10 @@
     <Property Name="playerId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="teamId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="seasonId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="championshipGoals" Type="int" />
+    <Property Name="nationalCupGoals" Type="int" />
+    <Property Name="regionalCupGoals" Type="int" />
+    <Property Name="otherCupGoals" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'FootballWebSiteDb.dbo.Ranking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->

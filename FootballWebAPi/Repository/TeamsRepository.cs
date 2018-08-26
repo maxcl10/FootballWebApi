@@ -28,17 +28,17 @@ namespace FootballWebSiteApi.Repository
 
         public IEnumerable<JTeam> GetHomeTeams()
         {
-            return Mapper.Map(entities.Teams.Where(o => o.homeTeam.HasValue && o.homeTeam.Value).OrderBy(o => o.displayOrder));
+            return Mapper.Map(entities.Teams.Where(o => o.ownerId.ToString() == Properties.Settings.Default.OwnerId).OrderBy(o => o.displayOrder));
         }
 
-        public IEnumerable<Models.JPlayer> GetPlayers(Guid id)
+        public IEnumerable<JPlayer> GetPlayers(Guid id)
         {
-            List<Models.JPlayer> players = new List<Models.JPlayer>();
+            List<Models.JPlayer> players = new List<JPlayer>();
             var currentSeason = entities.Seasons.First(p => p.currentSeason);
-            var playersId = entities.PlayerTeams.Where(o => o.teamId == id && o.seasonId == currentSeason.id);
+            var playersId = entities.PlayerTeams.Where(o => o.teamId == id && o.seasonId == currentSeason.id && o.Team.ownerId.ToString() == Properties.Settings.Default.OwnerId);
             foreach (PlayerTeam playerTeam in playersId)
             {
-                players.Add((Models.JPlayer)Mapper.Map(playerTeam.Player));
+                players.Add(Mapper.Map(playerTeam.Player));
             }
 
             return players;

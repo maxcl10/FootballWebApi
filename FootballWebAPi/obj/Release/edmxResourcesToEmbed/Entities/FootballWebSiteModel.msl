@@ -114,6 +114,10 @@
     <EntitySetMapping Name="PlayerTeams">
       <EntityTypeMapping TypeName="FootballWebSiteDbModel.PlayerTeam">
         <MappingFragment StoreEntitySet="PlayerTeam">
+          <ScalarProperty Name="otherCupGoals" ColumnName="otherCupGoals" />
+          <ScalarProperty Name="regionalCupGoals" ColumnName="regionalCupGoals" />
+          <ScalarProperty Name="nationalCupGoals" ColumnName="nationalCupGoals" />
+          <ScalarProperty Name="championshipGoals" ColumnName="championshipGoals" />
           <ScalarProperty Name="seasonId" ColumnName="seasonId" />
           <ScalarProperty Name="teamId" ColumnName="teamId" />
           <ScalarProperty Name="playerId" ColumnName="playerId" />

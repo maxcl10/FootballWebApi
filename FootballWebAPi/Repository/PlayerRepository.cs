@@ -21,7 +21,8 @@ namespace FootballWebSiteApi.Repository
             var currentSeasonId = entities.Seasons.Single(o => o.currentSeason).id;
             if (current)
             {
-                return Mapper.Map(entities.Players.Where(o => o.PlayerTeams.Any(s => s.seasonId == currentSeasonId)).ToList().OrderBy(p => GetOrder(p.position)));
+                return Mapper.Map(entities.Players.Where(o => o.PlayerTeams.Any(s => s.seasonId == currentSeasonId && s.Team.ownerId.ToString() == Properties.Settings.Default.OwnerId))
+                    .ToList().OrderBy(p => GetOrder(p.position)));
             }
             else
             {
@@ -55,8 +56,6 @@ namespace FootballWebSiteApi.Repository
         public Entities.Player Post(Entities.Player player)
         {
             player.id = Guid.NewGuid();
-
-
             entities.Players.Add(player);
             entities.SaveChanges();
             return player;

@@ -182,6 +182,10 @@
     <Property Name="playerId" Type="Guid" Nullable="false" />
     <Property Name="teamId" Type="Guid" Nullable="false" />
     <Property Name="seasonId" Type="Guid" Nullable="false" />
+    <Property Name="championshipGoals" Type="Int32" />
+    <Property Name="nationalCupGoals" Type="Int32" />
+    <Property Name="regionalCupGoals" Type="Int32" />
+    <Property Name="otherCupGoals" Type="Int32" />
     <NavigationProperty Name="Player" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Player" FromRole="PlayerTeam" ToRole="Player" />
     <NavigationProperty Name="Season" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Season" FromRole="PlayerTeam" ToRole="Season" />
     <NavigationProperty Name="Team" Relationship="FootballWebSiteDbModel.FK_PlayerTeam_Team" FromRole="PlayerTeam" ToRole="Team" />
